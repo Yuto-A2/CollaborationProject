@@ -24,7 +24,7 @@ namespace Test.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-
+        public DbSet<Recipe> Recipes { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
