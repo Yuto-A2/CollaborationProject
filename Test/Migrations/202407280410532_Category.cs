@@ -3,24 +3,24 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Recipe : DbMigration
+    public partial class Category : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Recipes",
+                "dbo.Categories",
                 c => new
                     {
-                        recipe_id = c.Int(nullable: false, identity: true),
-                        recipe_name = c.String(),
+                        category_id = c.Int(nullable: false, identity: true),
+                        category_name = c.String(),
                     })
-                .PrimaryKey(t => t.recipe_id);
+                .PrimaryKey(t => t.category_id);
             
         }
         
         public override void Down()
         {
-            DropTable("dbo.Recipes");
+            DropTable("dbo.Categories");
         }
     }
 }

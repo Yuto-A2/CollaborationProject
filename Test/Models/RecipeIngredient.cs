@@ -7,14 +7,13 @@ using System.Web;
 
 namespace Test.Models
 {
-    public class Recipe
+    public class RecipeIngredient
     {
         [Key]
         public int recipe_id { get; set; }
-        public string recipe_name { get; set; }
-        [ForeignKey("Category")]
-        public int category_id { get; set; }
-        public virtual Category Category { get; set; }
-
+        public string quantity {  get; set; }
+        [ForeignKey("Ingredient")]
+        public int ingredient_id { get; set; }
+        public virtual Ingredient Ingredient { get; set; }
     }
 }
