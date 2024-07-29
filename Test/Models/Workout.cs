@@ -18,20 +18,18 @@ namespace Test.Models
 
         // each workout is unique to one person
         // but each person can have many workouts
-        //[ForeignKey("Teacher")]
-        //public int TeacherId { get; set; }
-        //public virtual Teacher Teacher { get; set; }
+        [ForeignKey("Teacher")]
+        public int teacher_id { get; set; }
+        public virtual Teacher Teacher { get; set; }
 
-        //[ForeignKey("Student")]
-        //public int StudentId { get; set; }
-        //public virtual Student Student { get; set; }
+        [ForeignKey("Student")]
+        public int student_id { get; set; }
+        public virtual Student Student { get; set; }
     }
 
     public class WorkoutDto
     {
         public int WorkoutId { get; set; }
         public string WorkoutDate { get; set; }
-
-        // may need to add student or teacher later on
     }
 }

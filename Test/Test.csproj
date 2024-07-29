@@ -249,6 +249,14 @@
     <Compile Include="Migrations\202407280535410_TeacherMealPlan.designer.cs">
       <DependentUpon>202407280535410_TeacherMealPlan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202407291908490_WorkoutTeacherStudentFks.cs" />
+    <Compile Include="Migrations\202407291908490_WorkoutTeacherStudentFks.Designer.cs">
+      <DependentUpon>202407291908490_WorkoutTeacherStudentFks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202407291935520_Nutrition.cs" />
+    <Compile Include="Migrations\202407291935520_Nutrition.Designer.cs">
+      <DependentUpon>202407291935520_Nutrition.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -259,6 +267,7 @@
     <Compile Include="Models\Meal.cs" />
     <Compile Include="Models\MealPlan.cs" />
     <Compile Include="Models\Muscle.cs" />
+    <Compile Include="Models\NutritionalNeeds.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Models\RecipeIngredient.cs" />
     <Compile Include="Models\RecipeTag.cs" />
@@ -436,6 +445,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202407280535410_TeacherMealPlan.resx">
       <DependentUpon>202407280535410_TeacherMealPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202407291908490_WorkoutTeacherStudentFks.resx">
+      <DependentUpon>202407291908490_WorkoutTeacherStudentFks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202407291935520_Nutrition.resx">
+      <DependentUpon>202407291935520_Nutrition.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
