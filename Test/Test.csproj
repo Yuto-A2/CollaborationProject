@@ -257,6 +257,14 @@
     <Compile Include="Migrations\202407291935520_Nutrition.Designer.cs">
       <DependentUpon>202407291935520_Nutrition.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202407291939156_need_profile.cs" />
+    <Compile Include="Migrations\202407291939156_need_profile.Designer.cs">
+      <DependentUpon>202407291939156_need_profile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202407291956478_NutritionalNeedsMealPlans.cs" />
+    <Compile Include="Migrations\202407291956478_NutritionalNeedsMealPlans.Designer.cs">
+      <DependentUpon>202407291956478_NutritionalNeedsMealPlans.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -451,6 +459,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202407291935520_Nutrition.resx">
       <DependentUpon>202407291935520_Nutrition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202407291939156_need_profile.resx">
+      <DependentUpon>202407291939156_need_profile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202407291956478_NutritionalNeedsMealPlans.resx">
+      <DependentUpon>202407291956478_NutritionalNeedsMealPlans.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

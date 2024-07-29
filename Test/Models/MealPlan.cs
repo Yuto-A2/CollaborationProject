@@ -11,5 +11,8 @@ namespace Test.Models
         [Key]
         public int plan_id { get; set; }
         public string plan_name { get; set; }
+
+        // one meal plan can possibly satisfy multiple nutritional need profiles
+        public ICollection<NutritionalNeeds> NutritionalNeeds { get; set; }
     }
 }
