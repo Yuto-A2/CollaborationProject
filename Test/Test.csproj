@@ -192,21 +192,77 @@
     <Compile Include="Migrations\202407261411285_initial.Designer.cs">
       <DependentUpon>202407261411285_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202407261441165_Recipe.cs" />
-    <Compile Include="Migrations\202407261441165_Recipe.designer.cs">
-      <DependentUpon>202407261441165_Recipe.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202407261846101_ExercisePortion.cs" />
     <Compile Include="Migrations\202407261846101_ExercisePortion.Designer.cs">
       <DependentUpon>202407261846101_ExercisePortion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202407280410532_Category.cs" />
+    <Compile Include="Migrations\202407280410532_Category.designer.cs">
+      <DependentUpon>202407280410532_Category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202407280415145_Recipe.cs" />
+    <Compile Include="Migrations\202407280415145_Recipe.designer.cs">
+      <DependentUpon>202407280415145_Recipe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202407280419570_MealPlan.cs" />
+    <Compile Include="Migrations\202407280419570_MealPlan.designer.cs">
+      <DependentUpon>202407280419570_MealPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202407280427160_Tag.cs" />
+    <Compile Include="Migrations\202407280427160_Tag.designer.cs">
+      <DependentUpon>202407280427160_Tag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202407280436349_RecipeTag.cs" />
+    <Compile Include="Migrations\202407280436349_RecipeTag.designer.cs">
+      <DependentUpon>202407280436349_RecipeTag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202407280454279_Student.cs" />
+    <Compile Include="Migrations\202407280454279_Student.designer.cs">
+      <DependentUpon>202407280454279_Student.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202407280455424_Teacher.cs" />
+    <Compile Include="Migrations\202407280455424_Teacher.designer.cs">
+      <DependentUpon>202407280455424_Teacher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202407280502584_ReminderNote.cs" />
+    <Compile Include="Migrations\202407280502584_ReminderNote.designer.cs">
+      <DependentUpon>202407280502584_ReminderNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202407280517318_Ingredient.cs" />
+    <Compile Include="Migrations\202407280517318_Ingredient.designer.cs">
+      <DependentUpon>202407280517318_Ingredient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202407280525162_Meal.cs" />
+    <Compile Include="Migrations\202407280525162_Meal.designer.cs">
+      <DependentUpon>202407280525162_Meal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202407280530231_StudentMealPlan.cs" />
+    <Compile Include="Migrations\202407280530231_StudentMealPlan.designer.cs">
+      <DependentUpon>202407280530231_StudentMealPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202407280535410_TeacherMealPlan.cs" />
+    <Compile Include="Migrations\202407280535410_TeacherMealPlan.designer.cs">
+      <DependentUpon>202407280535410_TeacherMealPlan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Exercise.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Meal.cs" />
+    <Compile Include="Models\MealPlan.cs" />
     <Compile Include="Models\Muscle.cs" />
     <Compile Include="Models\Recipe.cs" />
+    <Compile Include="Models\RecipeIngredient.cs" />
+    <Compile Include="Models\RecipeTag.cs" />
+    <Compile Include="Models\ReminderNote.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\StudentMealPlan.cs" />
+    <Compile Include="Models\Tag.cs" />
+    <Compile Include="Models\Teacher.cs" />
+    <Compile Include="Models\TeacherMealPlan.cs" />
     <Compile Include="Models\Workout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -317,11 +373,44 @@
     <EmbeddedResource Include="Migrations\202407261411285_initial.resx">
       <DependentUpon>202407261411285_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202407261441165_Recipe.resx">
-      <DependentUpon>202407261441165_Recipe.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202407261846101_ExercisePortion.resx">
       <DependentUpon>202407261846101_ExercisePortion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202407280410532_Category.resx">
+      <DependentUpon>202407280410532_Category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202407280415145_Recipe.resx">
+      <DependentUpon>202407280415145_Recipe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202407280419570_MealPlan.resx">
+      <DependentUpon>202407280419570_MealPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202407280427160_Tag.resx">
+      <DependentUpon>202407280427160_Tag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202407280436349_RecipeTag.resx">
+      <DependentUpon>202407280436349_RecipeTag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202407280454279_Student.resx">
+      <DependentUpon>202407280454279_Student.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202407280455424_Teacher.resx">
+      <DependentUpon>202407280455424_Teacher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202407280502584_ReminderNote.resx">
+      <DependentUpon>202407280502584_ReminderNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202407280517318_Ingredient.resx">
+      <DependentUpon>202407280517318_Ingredient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202407280525162_Meal.resx">
+      <DependentUpon>202407280525162_Meal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202407280530231_StudentMealPlan.resx">
+      <DependentUpon>202407280530231_StudentMealPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202407280535410_TeacherMealPlan.resx">
+      <DependentUpon>202407280535410_TeacherMealPlan.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

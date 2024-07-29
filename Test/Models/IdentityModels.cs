@@ -28,8 +28,19 @@ namespace Test.Models
 
         public DbSet<Recipe> Recipes { get; set; }
 
-
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<MealPlan> MealPlans { get; set; }
         public DbSet<Exercise> Exercises { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<RecipeTag> RecipeTags { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<ReminderNote> ReminderNotes { get; set; }
+        public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<RecipeIngredient> RecipeIngredients { get; set; }
+        public DbSet<Meal>Meals { get; set; }
+        public DbSet<StudentMealPlan> StudentMealPlans { get; set; }
+        public DbSet<TeacherMealPlan> TeacherMealPlans { get; set; }
         public DbSet<Workout> Workouts { get; set; }
         public DbSet<Muscle> Muscles { get; set; }
         public static ApplicationDbContext Create()

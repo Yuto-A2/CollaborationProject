@@ -7,13 +7,13 @@ namespace Test.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class Recipe : IMigrationMetadata
+    public sealed partial class RecipeTag : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Recipe));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(RecipeTag));
         
         string IMigrationMetadata.Id
         {
-            get { return "202407261441165_Recipe"; }
+            get { return "202407280436349_RecipeTag"; }
         }
         
         string IMigrationMetadata.Source
