@@ -1,0 +1,35 @@
+﻿@model Test.Models.ViewModels.ShowWorkout
+@{
+    ViewBag.Title = "Details";
+}
+
+<a href="/Workout/List">Go back to workout list</a>
+<h2>Workout Details</h2>
+
+<div>Date: @Model.SelectedWorkout.WorkoutDate</div>
+
+<a href="/Workout/Edit/@Model.SelectedWorkout.WorkoutId">Edit Workout</a>
+
+<a href="/Workout/DeleteConfirm/@Model.SelectedWorkout.WorkoutId">Delete Workout</a>
+
+<div>
+    <h3>Exercises Performed:</h3>
+    @foreach (var exercise in Model.IncludedExercises)
+    {
+        <a href="/Exercise/Show/@exercise.ExerciseId">@exercise.ExerciseName</a> <a style="color:#ab2020"
+                                                                                    href="/Workout/UnAssociate/@Model.SelectedWorkout.WorkoutId?ExerciseId=@exercise.ExerciseId">[x]</a><br />
+    }
+
+    <div>
+        Add new exercise to @Model.SelectedWorkout.WorkoutDate
+        <form method="POST" action="/Workout/Associate/@Model.SelectedWorkout.WorkoutId">
+            <select name="ExerciseId">
+                @foreach (var exercise in Model.AvailableExercises)
+                {
+                    <option value="@exercise.ExerciseId">@exercise.ExerciseName</option>
+                }
+            </select>
+            <input type="submit" value="Include Exercise" />
+        </form>
+    </div>
+</div>

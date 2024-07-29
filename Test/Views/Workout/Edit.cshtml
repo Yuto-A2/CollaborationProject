@@ -1,0 +1,17 @@
+﻿@model Test.Models.WorkoutDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Workout</h2>
+
+<form method="POST" action="/Workout/Update/@Model.WorkoutId">
+    <input type="text" style="display:none;" name="WorkoutId" value="@Model.WorkoutId" />
+    <div>
+        <label>Workout Date</label>
+        <input type="text" name="WorkoutDate" value="@Model.WorkoutDate" />
+    </div>
+    <div>
+        <input type="submit" value="Update" />
+    </div>
+</form>

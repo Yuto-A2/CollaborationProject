@@ -1,0 +1,11 @@
+﻿@model Test.Models.Workout
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete this workout?</h2>
+<a href="/Workout/List">Cancel</a>
+
+<form action="/Workout/Delete/@Model.WorkoutId" method="POST">
+    <input type="submit" value="Confirm Delete" />
+</form>

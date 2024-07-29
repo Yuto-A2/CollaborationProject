@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Test.Models.Exercise>
+@{
+    ViewBag.Title = "Add Workout";
+}
+
+<h2>Create Workout</h2>
+
+<form action="/Workout/Create" method="POST">
+    <div>
+        <label>Date:</label><input type="text" name="WorkoutDate" />
+    </div>
+    @* add functionality to add exercises and the weights used *@
+    <div>
+        <label>Exercise:</label>
+        <select name="ExerciseId">
+            @foreach (var exercise in Model)
+            {
+                <option value="@exercise.ExerciseId">@exercise.ExerciseName</option>
+            }
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Add workout" />
+    </div>
+</form>

@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Test.Models.ExerciseDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List Exercises</h2>
+
+<a href="/Exercise/New" style="font-size:0.75rem">Add a new Exercise</a>
+
+@foreach (var Exercise in Model)
+{
+    <div>
+        <a href="Show/@Exercise.ExerciseId">@Exercise.ExerciseName</a> (@Exercise.GroupName)
+    </div>
+}

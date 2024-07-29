@@ -1,0 +1,23 @@
+﻿@model Test.Models.ViewModels.ShowExercise
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<a href="/Exercise/List">Go back to exercise list</a>
+<h2>@Model.SelectedExercise.ExerciseName</h2>
+<div>Muscle group: @Model.SelectedExercise.GroupName</div>
+<div>Description: @Model.SelectedExercise.ExerciseDescription</div>
+
+<a href="/Exercise/Edit/@Model.SelectedExercise.ExerciseId">Edit Exercise</a>
+
+<a href="/Exercise/DeleteConfirm/@Model.SelectedExercise.ExerciseId">Delete Exercise</a>
+
+<div>
+    <h2>Workouts Associated with @Model.SelectedExercise.ExerciseName</h2>
+    @foreach (var workout in Model.AssociatedWorkouts)
+    {
+        <a href="/Workout/Show/@workout.WorkoutId">@workout.WorkoutDate</a> <br />
+    }
+</div>
+

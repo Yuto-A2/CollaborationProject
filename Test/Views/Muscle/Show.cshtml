@@ -1,0 +1,19 @@
+﻿@model Test.Models.ViewModels.ShowMuscle
+@{
+    ViewBag.Title = "Show";
+}
+
+<a href="/Muscle/List">Go back to list</a>
+<br />
+<h2>@Model.Muscle.GroupName</h2>
+
+@* not adding edit or delete functionality since these
+    three muscle groups are all there is, in a broad sense*@
+
+<div>
+    <h3>Exercises related to this muscle group</h3>
+    @foreach (var exercise in Model.RelatedExercises)
+    {
+        <a style="text-decoration:none" href="/Exercise/Show/@exercise.ExerciseId">@exercise.ExerciseName</a><br />
+    }
+</div>

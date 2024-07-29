@@ -25,7 +25,7 @@ namespace Test.Controllers
         /// </summary>
         /// <returns>
         /// HEADER: 200 (OK)
-        /// CONTENT: all exercises in the database, including the weight they were last performed at
+        /// CONTENT: all exercises in the database
         /// </returns>
         /// <example>
         /// GET: api/ExerciseData/ListExercises -->
