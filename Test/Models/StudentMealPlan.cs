@@ -27,5 +27,6 @@ namespace Test.Models
         public string last_name { get; set; }
 
         public int plan_id { get; set; }
-     
+
+    }
 }

@@ -1,0 +1,14 @@
+﻿﻿@model IEnumerable<Test.Models.StudentMealPlanDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+
+@foreach (var StudentMealPlan in Model)
+{
+    <div>
+        @*<a href="Details/@StudentMealPlan.student_meal_plan_id">*@@StudentMealPlan.first_name
+    </div>
+}
