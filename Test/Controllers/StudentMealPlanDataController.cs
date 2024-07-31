@@ -40,6 +40,35 @@ namespace Test.Controllers
 
             return Ok(StudentMealPlanDtos);
         }
+        /// <summary>
+        /// Adds a StudentMealPlan to the system
+        /// </summary>
+        /// <returns>
+        /// HEADER: 201 (Created)
+        /// CONTENT: StudentMealPlan ID, StudentMealPlan Data
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// </returns>
+        /// <example>
+        /// POST: api/StudentMealPlanData/AddStudentMealPlan
+        /// FORM DATA: Diary JSON Object
+        /// </example>
+
+        [ResponseType(typeof(StudentMealPlan))]
+        [Route("api/StudentMealPlanData/AddStudentMealPlan/")]
+        [HttpPost]
+        public IHttpActionResult AddStudentMealPlan(StudentMealPlan studentMealPlan)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.StudentMealPlans.Add(studentMealPlan);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = studentMealPlan.student_meal_plan_id }, studentMealPlan);
+        }
     }
 }
 

@@ -385,12 +385,13 @@
     <Content Include="Views\Workout\Error.cshtml" />
     <Content Include="Views\Muscle\Show.cshtml" />
     <Content Include="Views\Muscle\List.cshtml" />
-    <Content Include="Views\Student\List.cshtml" />
     <Content Include="Views\StudentMealPlan\List.cshtml" />
+    <Content Include="Views\StudentMealPlan\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\DetailsStudent\" />
+    <Folder Include="Views\Student\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

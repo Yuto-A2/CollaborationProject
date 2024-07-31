@@ -40,5 +40,42 @@ namespace Test.Controllers
 
             return View(StudentMealPlans);
         }
+
+        // GET: StudentMealPlan/New
+        public ActionResult New()
+        {
+            string url = "StudentMealPlanData/ListStudentMealPlans";
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            IEnumerable<Test.Models.StudentMealPlanDto> studentMealPlanOptions = response.Content.ReadAsAsync<IEnumerable<Test.Models.StudentMealPlanDto>>().Result;
+            return View(studentMealPlanOptions);
+        }
+
+        // POST: StudentMealPlan/Create
+        [HttpPost]
+        public ActionResult Create(Test.Models.StudentMealPlan studentMealPlan)
+        {
+            Debug.WriteLine("The JSON payload is:");
+            Debug.WriteLine(studentMealPlan.student_meal_plan_id);
+
+            // Add StudentMealPlan to api
+            string url = "StudentMealPlanData/AddStudentMealPlan";
+
+            string jsonPayload = jss.Serialize(studentMealPlan);
+            Debug.WriteLine(jsonPayload);
+
+            HttpContent content = new StringContent(jsonPayload);
+            content.Headers.ContentType.MediaType = "application/json";
+
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return RedirectToAction("Error");
+            }
+        }
     }
 }
