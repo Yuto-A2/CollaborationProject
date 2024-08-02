@@ -108,5 +108,33 @@ namespace Test.Controllers
             }
         }
 
+        //GET: TeacherMealPlan/Edit/1
+        public ActionResult Edit(int id)
+        {
+            string url = "TeacherMealPlanData/FindTeacherMealPlan/" + id;
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            TeacherMealPlanDto SelectedTeacherMealPlan = response.Content.ReadAsAsync<TeacherMealPlanDto>().Result;
+            return View(SelectedTeacherMealPlan);
+        }
+        //POST: TeacherMealPlan/Update/6
+        [HttpPost]
+        public ActionResult Update(int id, Models.TeacherMealPlan TeacherMealPlan)
+        {
+            string url = "teachermealplandata/updateteachermealplan/" + id;
+            string jsonpayload = jss.Serialize(TeacherMealPlan);
+            HttpContent content = new StringContent(jsonpayload);
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+            Debug.WriteLine(content);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return RedirectToAction("Error");
+            }
+        }
+
     }
 }

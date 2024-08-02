@@ -108,5 +108,100 @@ namespace Test.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = teacherMealPlan.teacher_meal_plan_id }, teacherMealPlan);
         }
+
+        /// <summary>
+        /// Updates a particular StudentMealPlan to the system
+        /// </summary>
+        /// <param name="id">Represents the student_meal_plan Id primary key
+        /// </param>
+        /// <param name="diary">JSON FORM DATA of a student meal plan</param>
+        /// <returns>
+        /// HEADER: 204 (Success, No Content Response)
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// or 
+        /// HEADER: 404 (Not Found)
+        /// </returns>
+        /// <example>
+        /// POST: api/StudentMealPlanData/UpdateStudentMealPlan/5 
+        /// FORM DATA: Diary JSON Object
+        /// </example>
+
+        [ResponseType(typeof(void))]
+        [HttpPost]
+        public IHttpActionResult UpdateTeacherMealPlan(int id, Models.TeacherMealPlan teachermealplan)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != teachermealplan.teacher_meal_plan_id)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(teachermealplan).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TeacherMealPlanExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+
+                }
+            }
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        /// <summary>
+        /// Delete a particular teacher meal plan from the system
+        /// </summary>
+        /// <param name="id">The primary key of the teacher meal plan
+        /// </param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// or
+        /// HEADER: 404 (Not Found)
+        /// </returns>
+        /// <example>
+        /// POST: api/TeacherMealPlanData/DeleteTeacherMealPlan/5 
+        /// FORM DATA: (empty)
+        /// </example>
+
+        [ResponseType(typeof(Models.TeacherMealPlan))]
+        [HttpPost]
+        public IHttpActionResult DeleteTeacherMealPlan(int id)
+        {
+            Models.TeacherMealPlan teachermealplan = db.TeacherMealPlans.Find(id);
+            if (teachermealplan == null)
+            {
+                return NotFound();
+            }
+            db.TeacherMealPlans.Remove(teachermealplan);
+            db.SaveChanges();
+            return Ok();
+        }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private bool TeacherMealPlanExists(int id)
+        {
+            return db.TeacherMealPlans.Count(e => e.teacher_meal_plan_id == id) > 0;
+        }
     }
 }

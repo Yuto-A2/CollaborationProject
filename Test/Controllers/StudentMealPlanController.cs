@@ -109,7 +109,7 @@ namespace Test.Controllers
             }
         }
 
-        //GET: Student/Edit/1
+        //GET: StudentMealPlan/Edit/1
         public ActionResult Edit(int id)
         {
             string url = "StudentMealPlanData/FindStudentMealPlan/" + id;

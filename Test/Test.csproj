@@ -188,6 +188,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MuscleController.cs" />
     <Compile Include="Controllers\MuscleDataController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\StudentDataController.cs" />
     <Compile Include="Controllers\StudentMealPlanController.cs" />
     <Compile Include="Controllers\StudentMealPlanDataController.cs" />
@@ -299,6 +300,7 @@
     <Compile Include="Models\ViewModels\ShowWorkout.cs" />
     <Compile Include="Models\ViewModels\UpdateExercise.cs" />
     <Compile Include="Models\ViewModels\UpdateStudentMealPlan.cs" />
+    <Compile Include="Models\ViewModels\UpdateTeacherMealPlan.cs" />
     <Compile Include="Models\Workout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -399,11 +401,14 @@
     <Content Include="Views\TeacherMealPlan\List.cshtml" />
     <Content Include="Views\TeacherMealPlan\Details.cshtml" />
     <Content Include="Views\TeacherMealPlan\New.cshtml" />
+    <Content Include="Views\TeacherMealPlan\Edit.cshtml" />
+    <Content Include="Views\TeacherMealPlan\Error.cshtml" />
+    <Content Include="Views\TeacherMealPlan\DeleteConfirm.cshtml" />
+    <Content Include="Views\Student\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\DetailsStudent\" />
-    <Folder Include="Views\Student\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
