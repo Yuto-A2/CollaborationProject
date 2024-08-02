@@ -1,0 +1,12 @@
+﻿@model Test.Models.ViewModels.DetailsTeacherMealPlan
+
+@{
+    ViewBag.Title = "Details TeacherMealPlan";
+}
+
+<h2>Show Teacher Meal Plan</h2>
+<p><a href="/TeacherMealPlan/List">Go back to List</a></p>
+<p><a href="/TeacherMealPlan/Edit/@Model.SelectedTeacherMealPlan.teacher_meal_plan_id">Edit</a></p>
+<p>First name: @Model.SelectedTeacherMealPlan.first_name</p>
+<p>Last name: @Model.SelectedTeacherMealPlan.last_name</p>
+<p>Meal plan: @Model.SelectedTeacherMealPlan.plan_name</p>

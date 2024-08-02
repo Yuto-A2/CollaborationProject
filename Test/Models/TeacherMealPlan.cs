@@ -25,4 +25,17 @@ namespace Test.Models
         public int plan_id { get; set; }
         public virtual MealPlan MealPlan { get; set; }
     }
+    public class TeacherMealPlanDto
+    {
+        public int teacher_meal_plan_id { get; set; }
+
+        public int teacher_id { get; set; }
+        public string first_name { get; set; }
+        public string last_name { get; set; }
+        public string email { get; set; }
+        public string phone_number { get; set; }
+        public int plan_id { get; set; }
+        public string plan_name { get; set; }
+
+    }
 }

@@ -37,7 +37,9 @@ namespace Test.Controllers
             {
                 student_id = s.student_id,
                 first_name = s.first_name,
-                last_name = s.last_name
+                last_name = s.last_name,
+                email = s.email,
+                phone_number = s.phone_number
             }));
 
             return Ok(StudentDtos);
@@ -46,14 +48,14 @@ namespace Test.Controllers
         ///Returns Studnents in the system not caring for a particular student.
         /// </summary>
         /// <returns>
-        /// CONTENT: all students in the database writing a diary
+        /// CONTENT: all students in the database about meal plan
         /// </returns>
         /// <param name="id">Content Primary Key</param>
         /// <example>
-        /// GET: api/StudentData/ListDiariesForStudent/1
+        /// GET: api/StudentData/ListStudentForStudentMealPlan/1
         /// </example>
         [HttpGet]
-        [Route("api/StudentData/ListStudentsForMeal/{id}")]
+        [Route("api/StudentData/ListStudentForStudentMealPlan/{id}")]
         [ResponseType(typeof(StudentDto))]
         public IHttpActionResult ListStudentsForDiary(int id)
         {
@@ -64,7 +66,9 @@ namespace Test.Controllers
             {
                 student_id = s.student_id,
                 first_name = s.first_name,
-                last_name = s.last_name
+                last_name = s.last_name,
+                email = s.email,
+                phone_number = s.phone_number
             }));
             return Ok(StudentDtos);
         }

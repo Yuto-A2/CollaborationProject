@@ -1,0 +1,15 @@
+﻿﻿@model Test.Models.TeacherMealPlanDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete this meal plan?</h2>
+<a href="/TeacherMealPlan/List">Cancel</a>
+<h2>@Model.first_name</h2>
+<div>
+    Meal plan: @Model.plan_name
+</div>
+
+<form action="/Delete/@Model.teacher_meal_plan_id" method="POST">
+    <input type="submit" value="Confirm Delete" />
+</form>

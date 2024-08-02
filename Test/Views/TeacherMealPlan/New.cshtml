@@ -1,10 +1,10 @@
-﻿﻿@model IEnumerable<Test.Models.StudentMealPlanDto>
+﻿﻿@model IEnumerable<Test.Models.TeacherMealPlanDto>
 @{
     ViewBag.Title = "Create";
 }
 
-<h2>Add Student Meal  Plan</h2>
-<form method="POST" action="Create" name="StudentMealPlanForm">
+<h2>Add Teacher Meal  Plan</h2>
+<form method="POST" action="Create" name="TeacherMealPlanForm">
 
 
     <div>
@@ -21,9 +21,10 @@
         <label for="plan_name">Plan Name:</label>
         <input type="text" name="plan_name" id="plan_name">
     </div>
-  
+
     <div>
         <input type="submit" value="Add your meal plan" />
     </div>
 </form>
+
 

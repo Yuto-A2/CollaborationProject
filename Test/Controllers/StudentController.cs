@@ -7,8 +7,9 @@ using System.Net.Http;
 using System.Diagnostics;
 using System.Web.Script.Serialization;
 using Test.Models;
-//using PassionProject.Models.ViewModels;
-namespace Teset.Controllers
+using Test.Models.ViewModels;
+
+namespace Test.Controllers
 {
     public class StudentController : Controller
     {
@@ -26,14 +27,11 @@ namespace Teset.Controllers
             string url = "studentdata/liststudents";
             HttpResponseMessage response = client.GetAsync(url).Result;
 
-            //Debug.WriteLine("The response code is");
-            //Debug.WriteLine(response.StatusCode);
+            Debug.WriteLine("The response code is");
+            Debug.WriteLine(response.StatusCode);
 
             IEnumerable<StudentDto> Students = response.Content.ReadAsAsync<IEnumerable<StudentDto>>().Result;
             return View(Students);
         }
-
-       
     }
-
 }

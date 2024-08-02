@@ -1,0 +1,22 @@
+﻿
+﻿@model Test.Models.ViewModels.UpdateStudentMealPlan
+    @{
+        ViewBag.Title = "Edit";
+    }
+
+    <h2>Update Student Meal Plan</h2>
+    <form action="/Update/@Model.SelectedStudentMealPlan.student_meal_plan_id" method="POST">
+
+        <div>
+            <label>First name:</label> <input type="text" name="fname" value="@Model.SelectedStudentMealPlan.first_name" />
+        </div>
+
+        <div>
+            <label>Last name:</label> <input type="text" name="lname" value="@Model.SelectedStudentMealPlan.last_name" />
+        </div>
+
+        <div>
+            <label>Meal Plan: </label> <input type="text" name="meal_plan" value="@Model.SelectedStudentMealPlan.plan_name" />
+        </div>
+    </form>
+

@@ -9,7 +9,7 @@ namespace Test.Models.ViewModels
     public class DetailsStudent
     {
         public StudentDto SelectedStudent { get; set; }
-        //public IEnumerable<DiaryDto> KeptDiaries { get; set; }
+        public IEnumerable<StudentMealPlanDto> KeptStudentMealPlans { get; set; }
 
     }
 }
