@@ -1,0 +1,18 @@
+﻿@model Test.Models.ViewModels.DetailsStudentMealPlan
+@{
+    ViewBag.Title = "Details StudentMealPlan";
+}
+
+<h2>Show Diaries</h2>
+<p><a href="/StudentMealPlan/List">Go back to List</a></p>
+<p><a href="/StudentMealPlan/Edit/@Model.SelectedStudentMealPlan.student_meal_plan_id"></a></p>
+<p>First name: @Model.SelectedStudentMealPlan.first_name</p>
+<p>Last name: @Model.SelectedStudentMealPlan.last_name</p>
+<p>Meal plan: @Model.SelectedStudentMealPlan.plan_name</p>
+
+<a href="/Views/Content/Details.cshtml">/Views/StudentMealPlan/Details.cshtml</a>@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
