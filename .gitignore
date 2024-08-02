@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Test/Migrations/202408022257311_RecipeIngredients.cs
+/Test/Migrations/202408022257311_RecipeIngredients.Designer.cs
+/Test/Migrations/202408022257311_RecipeIngredients.resx
