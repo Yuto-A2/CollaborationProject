@@ -16,6 +16,12 @@ namespace Test.Models
         public string email { get; set; }
         public string phone_number { get; set; }
 
+        // each teacher has one individual teacher meal plan
+        public TeacherMealPlan TeacherMealPlan { get; set; }
+        // may need to add virtual attribute later
+
+
+        // why doesn't the teacher table have a Dto?
     }
     public class TeacherDto
     {

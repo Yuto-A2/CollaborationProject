@@ -43,7 +43,7 @@ namespace Test.Models
         public DbSet<TeacherMealPlan> TeacherMealPlans { get; set; }
         public DbSet<Workout> Workouts { get; set; }
         public DbSet<Muscle> Muscles { get; set; }
-        public DbSet<NutritionalNeeds> Nutrition {  get; set; }
+        public DbSet<NutritionalNeeds> NutritionalNeeds {  get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
