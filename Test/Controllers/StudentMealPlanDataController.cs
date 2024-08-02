@@ -52,7 +52,7 @@ namespace Test.Controllers
         /// <param name="id">students ID.</param>
         /// The id of the student.
         /// </param>
-        //GET: api/DiaryData/ListDiariesForTeachers/1->
+        //GET: api/DiaryData/ListDiariesForStudent/1->
         //[{"contentId":1, "content": Fui a Mexio., "Date": May 30, "comment": Goode job, }],
         [HttpGet]
         [Route("api/StudentMealPlanData/ListStudentMealPlansForStudent/{id}")]
@@ -60,7 +60,7 @@ namespace Test.Controllers
         public IHttpActionResult ListStudentMealPlans(int id)
         {
             //SQL equivalent:
-            //SELECT first_name, last_name, meal_plan FROM StudentMealPlans JOIN Students on Student.student_id = TeacherMealPlan.student_id JOIN TeacherMealPlan.plan_id = MealPlan.plan_id;
+            //SELECT first_name, last_name, meal_plan FROM StudentMealPlans JOIN Students on Student.student_id = StudentMealPlan.student_id JOIN StudentMealPlan.plan_id = MealPlan.plan_id;
             List<Models.StudentMealPlan> StudentMealPlan = db.StudentMealPlans.ToList();
             List<StudentMealPlanDto> StudentMealPlanDtos = new List<StudentMealPlanDto>();
 

@@ -24,7 +24,7 @@ namespace Test.Controllers
             client.BaseAddress = new Uri("https://localhost:44326/api/");
         }
 
-        // GET: Diary/List
+        // GET: StudentMealPlan/List
         public ActionResult List()
         {
             //curl localhost:44326/api/StudentMealPlanData/ListStudentMealPlans 

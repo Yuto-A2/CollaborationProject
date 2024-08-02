@@ -9,6 +9,6 @@
 @foreach (var StudentMealPlan in Model)
 {
     <div>
-        @*<a href="Details/@StudentMealPlan.student_meal_plan_id">*@@StudentMealPlan.first_name
+        <a href="Details/@StudentMealPlan.student_meal_plan_id">@StudentMealPlan.first_name @StudentMealPlan.last_name</a>
     </div>
 }

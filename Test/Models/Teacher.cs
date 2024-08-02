@@ -17,4 +17,12 @@ namespace Test.Models
         public string phone_number { get; set; }
 
     }
+    public class TeacherDto
+    {
+        public int teacher_id { get; set; }
+        public string first_name { get; set; }
+        public string last_name { get; set; }
+        public string email { get; set; }
+        public string phone_number { get; set; }
+    }
 }

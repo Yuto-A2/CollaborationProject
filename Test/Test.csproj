@@ -191,6 +191,8 @@
     <Compile Include="Controllers\StudentDataController.cs" />
     <Compile Include="Controllers\StudentMealPlanController.cs" />
     <Compile Include="Controllers\StudentMealPlanDataController.cs" />
+    <Compile Include="Controllers\TeacherMealPlanController.cs" />
+    <Compile Include="Controllers\TeacherMealPlanDataController.cs" />
     <Compile Include="Controllers\WorkoutController.cs" />
     <Compile Include="Controllers\WorkoutDataController.cs" />
     <Compile Include="Global.asax.cs">
@@ -290,6 +292,7 @@
     <Compile Include="Models\TeacherMealPlan.cs" />
     <Compile Include="Models\ViewModels\DetailsStudent.cs" />
     <Compile Include="Models\ViewModels\DetailsStudentMealPlan.cs" />
+    <Compile Include="Models\ViewModels\DetailsTeacher.cs" />
     <Compile Include="Models\ViewModels\ShowExercise.cs" />
     <Compile Include="Models\ViewModels\ShowMuscle.cs" />
     <Compile Include="Models\ViewModels\ShowWorkout.cs" />
@@ -392,6 +395,7 @@
     <Content Include="Views\StudentMealPlan\Edit.cshtml" />
     <Content Include="Views\StudentMealPlan\Error.cshtml" />
     <Content Include="Views\StudentMealPlan\DeleteConfirm.cshtml" />
+    <Content Include="Views\TeacherMealPlan\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
