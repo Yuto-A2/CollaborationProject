@@ -37,7 +37,8 @@ namespace Test.Controllers
                 teacher_id = plan.teacher_id,
                 first_name = plan.Teacher.first_name,
                 last_name = plan.Teacher.last_name,
-                plan_id = plan.plan_id
+                plan_id = plan.plan_id,
+                plan_name = plan.MealPlan.plan_name
             }));
 
             return Ok(TeacherMealPlanDtos);
@@ -70,10 +71,42 @@ namespace Test.Controllers
                 teacher_meal_plan_id = id,
                 first_name = d.Teacher.first_name,
                 last_name = d.Teacher.last_name,
-                plan_name = d.MealPlan.plan_name
+                plan_name = d.MealPlan.plan_name,
+                teacher_id = d.Teacher.teacher_id,
+                plan_id = d.MealPlan.plan_id
             }));
 
             return Ok(TeacherMealPlanDtos);
+        }
+
+        /// <summary>
+        /// Adds a StudentMealPlan to the system
+        /// </summary>
+        /// <returns>
+        /// HEADER: 201 (Created)
+        /// CONTENT: StudentMealPlan ID, StudentMealPlan Data
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// </returns>
+        /// <example>
+        /// POST: api/StudentMealPlanData/AddStudentMealPlan
+        /// FORM DATA: Diary JSON Object
+        /// </example>
+
+        [ResponseType(typeof(Models.TeacherMealPlan))]
+        [Route("api/TeacherMealPlanData/AddTeacherMealPlan/")]
+        [HttpPost]
+        public IHttpActionResult AddTeacherMealPlan(Models.TeacherMealPlan teacherMealPlan)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.TeacherMealPlans.Add(teacherMealPlan);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = teacherMealPlan.teacher_meal_plan_id }, teacherMealPlan);
         }
     }
 }

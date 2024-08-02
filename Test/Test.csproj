@@ -398,6 +398,7 @@
     <Content Include="Views\StudentMealPlan\DeleteConfirm.cshtml" />
     <Content Include="Views\TeacherMealPlan\List.cshtml" />
     <Content Include="Views\TeacherMealPlan\Details.cshtml" />
+    <Content Include="Views\TeacherMealPlan\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
