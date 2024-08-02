@@ -405,6 +405,8 @@
     <Content Include="Views\TeacherMealPlan\Error.cshtml" />
     <Content Include="Views\TeacherMealPlan\DeleteConfirm.cshtml" />
     <Content Include="Views\Student\List.cshtml" />
+    <Content Include="Views\Student\Details.cshtml" />
+    <Content Include="Views\Student\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

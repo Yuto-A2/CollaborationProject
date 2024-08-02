@@ -73,6 +73,32 @@ namespace Test.Controllers
             return Ok(StudentDtos);
         }
 
-       
+        /// <summary>
+        /// Adds a particular Student in the system with POST Data input.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 201(Created)
+        /// CONTENT: A Student data
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// </returns>
+        /// <example>
+        /// POST: api/StudentData/AddStudent/
+        ///FORM DATA: Student JSON Object
+        ///</example>
+
+        [ResponseType(typeof(Student))]
+        [HttpPost]
+        public IHttpActionResult AddStudent(Student Student)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.Students.Add(Student);
+            db.SaveChanges();
+            return CreatedAtRoute("DefaultApi", new { id = Student.student_id }, Student);
+        }
     }
 }
