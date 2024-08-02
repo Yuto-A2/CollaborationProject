@@ -13,6 +13,9 @@ namespace Test.Models
         public int meal_id { get; set; }
 
         public string meal_date { get; set; }
+
+        // each meal belongs to one meal plan tier
+        // each meal plan tier has many meals
         [ForeignKey("MealPlan")]
         public int plan_id { get; set; }
         public virtual MealPlan MealPlan { get; set; }

@@ -7,12 +7,15 @@ using System.Web;
 
 namespace Test.Models
 {
+    // table for notes for cooks regarding user food restrictions
     public class ReminderNote
     {
         [Key]
         public int note_id {  get; set; }
         public string note_text {  get; set; }
 
+        // one user can have only one note
+        // each note can only belong to one user
         [ForeignKey("Teacher")]
         public int teacher_id { get; set; }
         public virtual Teacher Teacher { get; set; }

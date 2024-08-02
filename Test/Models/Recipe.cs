@@ -12,6 +12,9 @@ namespace Test.Models
         [Key]
         public int recipe_id { get; set; }
         public string recipe_name { get; set; }
+
+        // each recipe belongs to one food category
+        // each category has many recipes
         [ForeignKey("Category")]
         public int category_id { get; set; }
         public virtual Category Category { get; set; }

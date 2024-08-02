@@ -7,6 +7,8 @@ using System.Web;
 
 namespace Test.Models
 {
+    // ties tags and recipes together
+    // REDO this table using public ICollection
     public class RecipeTag
     {
         [Key]

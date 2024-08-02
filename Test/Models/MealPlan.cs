@@ -6,6 +6,7 @@ using System.Web;
 
 namespace Test.Models
 {
+    // tiers of meal plans
     public class MealPlan
     {
         [Key]

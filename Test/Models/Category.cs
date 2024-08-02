@@ -6,6 +6,7 @@ using System.Web;
 
 namespace Test.Models
 {
+    // categories of food for food restrictions
     public class Category
     {
         [Key]

@@ -6,6 +6,8 @@ using System.Web;
 
 namespace Test.Models
 {
+    // represents keywords for users to type
+    // a possible extra feature
     public class Tag
     {
         [Key]
