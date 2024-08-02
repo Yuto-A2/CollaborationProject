@@ -41,6 +41,35 @@ namespace Test.Controllers
             return View(TeacherMealPlans);
         }
 
-        
+        //GET: TeacherMealPlan/Details/3
+        public ActionResult Details(int id)
+        {
+            DetailsTeacherMealPlan viewModel = new DetailsTeacherMealPlan();
+            //curl https://localhost:44326//api/TeacherMealPlanData/FindTeacherMealPlan/{id}
+
+            string url = "TeacherMealPlanData/FindTeacherMealPlan/" + id;
+
+            HttpResponseMessage response = client.GetAsync(url).Result;
+
+            Debug.WriteLine("The response code is ");
+            Debug.WriteLine(response.StatusCode);
+
+            TeacherMealPlanDto SelectedContent = response.Content.ReadAsAsync<TeacherMealPlanDto>().Result;
+            Debug.WriteLine("Teacher Meal Plan received ");
+            Debug.WriteLine(SelectedContent.first_name);
+            //Views/TeacherMealPlan/Show.cshtml
+
+
+            viewModel.SelectedTeacherMealPlan = SelectedContent;
+
+            url = "TeacherMealPlanData/TeacherMealPlansForTeacher/" + id;
+            response = client.GetAsync(url).Result;
+            IEnumerable<TeacherMealPlanDto> ResponsibleTeachers = response.Content.ReadAsAsync<IEnumerable<TeacherMealPlanDto>>().Result;
+
+            viewModel.ResponsibleTeachers = ResponsibleTeachers;
+
+            return View(viewModel);
+        }
+
     }
 }

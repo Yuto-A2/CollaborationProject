@@ -7,7 +7,8 @@ namespace Test.Models.ViewModels
 {
     public class DetailsTeacherMealPlan
     {
-        public TeacherMealPlanDto SelectedTeachertMealPlan { get; set; }
-        public IEnumerable<TeacherDto> ResponsibleTeachers { get; set; }
+        public TeacherMealPlanDto SelectedTeacherMealPlan { get; set; }
+        public IEnumerable<TeacherMealPlanDto> ResponsibleTeachers { get; set; }
+        //public IEnumerable<TeacherDto> ResponsibleTeachers { get; set; }
     }
 }

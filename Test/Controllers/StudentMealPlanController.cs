@@ -41,7 +41,7 @@ namespace Test.Controllers
             return View(StudentMealPlans);
         }
 
-        //GET: StudentMeal/Details/3
+        //GET: StudentMealPlan/Details/3
         public ActionResult Details(int id)
         {
             DetailsStudentMealPlan viewModel = new DetailsStudentMealPlan();
@@ -55,18 +55,18 @@ namespace Test.Controllers
             Debug.WriteLine(response.StatusCode);
 
             StudentMealPlanDto SelectedContent = response.Content.ReadAsAsync<StudentMealPlanDto>().Result;
-            Debug.WriteLine("Diary received ");
+            Debug.WriteLine("Student Meal Plan received ");
             Debug.WriteLine(SelectedContent.first_name);
             //Views/StudentMealPlan/Show.cshtml
 
 
             viewModel.SelectedStudentMealPlan = SelectedContent;
 
-            url = "StudentMealPlanData/StudentMealPlansForstudent" + id;
+            url = "StudentMealPlanData/StudentMealPlansForstudent/" + id;
             response = client.GetAsync(url).Result;
             IEnumerable<StudentMealPlanDto> ResponsibleStudents = response.Content.ReadAsAsync<IEnumerable<StudentMealPlanDto>>().Result;
 
-            //ViewModel.ResponsibleStudents = ResponsibleStudents;
+            viewModel.ResponsibleStudents = ResponsibleStudents;
 
             return View(viewModel);
         }

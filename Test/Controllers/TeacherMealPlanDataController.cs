@@ -59,6 +59,7 @@ namespace Test.Controllers
         [ResponseType(typeof(TeacherMealPlanDto))]
         public IHttpActionResult ListTeacherMealPlans(int id)
         {
+
             //SQL equivalent:
             //SELECT first_name, last_name, meal_plan FROM TeacherMealPlans JOIN Teachers on Teacher.teacher_id = TeacherMealPlan.teacher_id JOIN TeacherMealPlan.plan_id = MealPlan.plan_id;
             List<Models.TeacherMealPlan> TeacherMealPlan = db.TeacherMealPlans.ToList();
