@@ -1,0 +1,12 @@
+﻿﻿@model Test.Models.ViewModels.DetailsTeacher
+@{
+    ViewBag.Title = "Details";
+}
+
+<a href="Teacher/List">Go back to list</a>
+<h2>Teacher's Details</h2>
+
+@foreach (var teacher in Model.KeptTeacherMealPlans)
+{
+    <a href="/Details/@teacher.teacher_id">@teacher.first_name @teacher.last_name</a>
+}

@@ -192,6 +192,8 @@
     <Compile Include="Controllers\StudentDataController.cs" />
     <Compile Include="Controllers\StudentMealPlanController.cs" />
     <Compile Include="Controllers\StudentMealPlanDataController.cs" />
+    <Compile Include="Controllers\TeacherController.cs" />
+    <Compile Include="Controllers\TeacherDataController.cs" />
     <Compile Include="Controllers\TeacherMealPlanController.cs" />
     <Compile Include="Controllers\TeacherMealPlanDataController.cs" />
     <Compile Include="Controllers\WorkoutController.cs" />
@@ -407,11 +409,21 @@
     <Content Include="Views\Student\List.cshtml" />
     <Content Include="Views\Student\Details.cshtml" />
     <Content Include="Views\Student\New.cshtml" />
+    <Content Include="Views\Student\Edit.cshtml" />
+    <Content Include="Views\Student\Error.cshtml" />
+    <Content Include="Views\Student\DeleteConfirm.cshtml" />
+    <Content Include="Views\Teacher\List.cshtml" />
+    <Content Include="Views\Teacher\Details.cshtml" />
+    <Content Include="Views\Teacher\New.cshtml" />
+    <Content Include="Views\Teacher\Edit.cshtml" />
+    <Content Include="Views\Teacher\Error.cshtml" />
+    <Content Include="Views\Teacher\DeleteConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Default\" />
     <Folder Include="Views\DetailsStudent\" />
+    <Folder Include="Views\TeacherData\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

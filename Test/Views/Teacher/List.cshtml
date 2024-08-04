@@ -1,0 +1,14 @@
+﻿﻿@model IEnumerable<Test.Models.TeacherDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Teacher List</h2>
+<a href="/Teacher/New">Add Teachers</a>
+@foreach (var Teachers in Model)
+{
+    <div>
+    <a href="/Teacher/Details/@Teachers.teacher_id">@Teachers.first_name @Teachers.last_name</a>
+    </div>
+
+}

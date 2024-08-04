@@ -57,7 +57,7 @@ namespace Test.Controllers
         [HttpGet]
         [Route("api/StudentData/ListStudentForStudentMealPlan/{id}")]
         [ResponseType(typeof(StudentDto))]
-        public IHttpActionResult ListStudentsForDiary(int id)
+        public IHttpActionResult ListStudentsForStudentMealPlan(int id)
         {
             List<Student> Students = db.Students.ToList();
 
@@ -99,6 +99,99 @@ namespace Test.Controllers
             db.Students.Add(Student);
             db.SaveChanges();
             return CreatedAtRoute("DefaultApi", new { id = Student.student_id }, Student);
+        }
+
+        /// <summary>
+        /// Updates a particular Student in the system with POST Data input.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 204(Success, No Content Response)
+        /// CONTENT: A Student in the system matching up to the Student ID primary Key
+        /// or
+        /// HEADER: 404 (Not Found)
+        /// </returns>
+        /// <param name="id">Represents the Student ID primary key</param>
+        /// <param name="Student">JSON FROM DATA of a student</param>
+        /// <example>
+        /// POST: api/StudentData/UpdateStudent/1
+        ///FORM DATA: Student JSON Object
+
+        [ResponseType(typeof(void))]
+        [HttpPost]
+        public IHttpActionResult UpdateStudent(int id, Student Student)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != Student.student_id)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(Student).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!StudentExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private bool StudentExists(int id)
+        {
+            return db.Students.Count(e => e.student_id == id) > 0;
+        }
+
+        /// <summary>
+        /// Delete a Student from the database by its ID.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200(Ok)
+        /// CONTENT: A Student in the system matching up to the Student ID primary Key
+        /// or
+        /// HEADER: 404 (Not Found)
+        /// </returns>
+        /// <param name="id">The primary key of the Student</param>
+        /// <example>
+        /// POST: api/StudentData/DeleteStudent/6
+        ///FORM DATA: (empty)
+
+        [ResponseType(typeof(Student))]
+        [HttpPost]
+        public IHttpActionResult DeleteStudent(int id)
+        {
+            Student student = db.Students.Find(id);
+            if (student == null)
+            {
+                return NotFound();
+            }
+            db.Students.Remove(student);
+            db.SaveChanges();
+
+            return Ok();
         }
     }
 }

@@ -98,6 +98,33 @@ namespace Test.Controllers
                 return RedirectToAction("Error");
             }
         }
+        //GET: Student/Edit/16
+        public ActionResult Edit(int id)
+        {
+            string url = "studentdata/findstudent/" + id;
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            StudentDto selectedStudent = response.Content.ReadAsAsync<StudentDto>().Result;
+            return View(selectedStudent);
+        }
+        //POST: Student/Update/6
+        [HttpPost]
+        public ActionResult Update(int id, Student Student)
+        {
+            string url = "studentdata/updatestudent/" + id;
+            string jsonpayload = jss.Serialize(Student);
+            HttpContent content = new StringContent(jsonpayload);
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+            Debug.WriteLine(content);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return RedirectToAction("Error");
+            }
+        }
 
     }
 }

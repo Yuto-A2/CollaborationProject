@@ -1,0 +1,19 @@
+﻿﻿@model Test.Models.TeacherDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete this teacher?</h2>
+<a href="/Teacher/List">Cancel</a>
+<h2>@Model.first_name</h2>
+<div>
+    First Name: @Model.first_name
+</div>
+
+<div>
+    Last Name: @Model.last_name
+</div>
+
+<form action="/Delete/@Model.teacher_id" method="POST">
+    <input type="submit" value="Confirm Delete" />
+</form>
