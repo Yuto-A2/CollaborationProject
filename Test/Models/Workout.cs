@@ -11,6 +11,7 @@ namespace Test.Models
     {
         [Key]
         public int WorkoutId { get; set; }
+        //public DateTime WorkoutDate { get; set; }
         public string WorkoutDate { get; set; }
 
         // one workout can have many exercises
@@ -30,6 +31,8 @@ namespace Test.Models
     public class WorkoutDto
     {
         public int WorkoutId { get; set; }
+        //public DateTime WorkoutDate { get; set; }
+
         public string WorkoutDate { get; set; }
     }
 }
