@@ -20,15 +20,11 @@ namespace Test.Models
         // but each person can have many workouts
         // ? = nullable foreign key
         [ForeignKey("Teacher")]
-        //public int? teacher_id { get; set; }
-
-        public int teacher_id { get; set; }
+        public int? teacher_id { get; set; }
         public virtual Teacher Teacher { get; set; }
 
         [ForeignKey("Student")]
-        //public int? student_id { get; set; }
-
-        public int student_id { get; set; }
+        public int? student_id { get; set; }
         public virtual Student Student { get; set; }
     }
 
