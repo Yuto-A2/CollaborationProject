@@ -22,6 +22,16 @@ namespace Test.Controllers
             client.BaseAddress = new Uri("https://localhost:44326/api/");
         }
 
+        //GET: Teacher/Index
+        public ActionResult Index()
+        {
+            string url = "teacherdata/listteachers";
+            HttpResponseMessage response = client.GetAsync(url).Result;
+
+            IEnumerable<TeacherDto> Teachers = response.Content.ReadAsAsync<IEnumerable<TeacherDto>>().Result;
+            return View(Teachers);
+        }
+
         //GET: Teacher/List
         public ActionResult List()
         {
@@ -62,7 +72,7 @@ namespace Test.Controllers
             HttpResponseMessage response = client.PostAsync(url, content).Result;
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("List");
+                return RedirectToAction("Index");
             }
             else
             {
@@ -92,17 +102,17 @@ namespace Test.Controllers
             Debug.WriteLine(content);
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("List");
+                return RedirectToAction("Index");
             }
             else
             {
                 return RedirectToAction("Error");
             }
         }
-        //GET: Student/Delete/5
+        //GET: Teacher/Delete/5
         public ActionResult DeleteConfirm(int id)
         {
-            string url = "teacherdata/findteacher" + id;
+            string url = "teacherdata/findteacher/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             TeacherDto selectedTeacher = response.Content.ReadAsAsync<TeacherDto>().Result;
             return View(selectedTeacher);
@@ -119,12 +129,17 @@ namespace Test.Controllers
 
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("List");
+                return RedirectToAction("Index");
             }
             else
             {
                 return RedirectToAction("Error");
             }
+        }
+
+        public ActionResult Error()
+        {
+            return View();
         }
     }
 }

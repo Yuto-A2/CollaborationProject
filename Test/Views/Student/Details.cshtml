@@ -1,17 +1,9 @@
-﻿﻿@model Test.Models.ViewModels.DetailsStudent
+﻿@model Test.Models.StudentDto
+
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Student Details";
 }
-<p><a href="/Student/List">Go back to list</a></p>
-<p><a href="/Student/Edit/@Model.SelectedStudent.student_id">Update</a></p>
-<p><a href="/Student/DeleteConfirm/@Model.SelectedStudent.student_id">Delete</a></p>
-<h2>@Model.SelectedStudent.first_name @Model.SelectedStudent.last_name</h2>
 
-<div>
-    <h3>Student Meal Plans</h3>
-    @foreach (var StudentMealPlan in Model.KeptStudentMealPlans)
-    {
-        <a href="/Student/Details/@StudentMealPlan.student_meal_plan_id">@StudentMealPlan.plan_name</a>
-    }
-</div>
+<h2>Student Details</h2>
 
+<p>Under development</p>

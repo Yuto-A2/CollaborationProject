@@ -1,6 +1,13 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Error";
 }
 
-<h2>Something went wrong</h2>
+<h2>Error</h2>
+
+<div class="alert alert-danger" role="alert">
+    <strong>Oops!</strong> Something went wrong while processing your request.
+</div>
+
+<p>
+    <a href="@Url.Action("Index", "Teacher")" class="btn btn-primary">Back to Teachers List</a>
+</p>

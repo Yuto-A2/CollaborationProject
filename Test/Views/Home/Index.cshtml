@@ -2,32 +2,97 @@
     ViewBag.Title = "Home Page";
 }
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">Recipe Manager</h1>
-        <p class="lead">Let's manage students meal!</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recipe Manager Home</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
 
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
+        .main-container {
+            margin-top: 50px;
+        }
+
+        .card {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container main-container">
+        <div class="text-center">
+            <h1 class="display-4">Recipe Manager</h1>
+            <p class="lead">Let's manage students' meals efficiently!</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Manage Students</h5>
+                        <p class="card-text">Add, edit, and view students enrolled in meal plans.</p>
+                        <a href="@Url.Action("Index", "Student")" class="btn btn-primary">Manage Students</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Manage Teachers</h5>
+                        <p class="card-text">Add, edit, and view teachers enrolled in meal plans.</p>
+                        <a href="@Url.Action("Index", "Teacher")" class="btn btn-primary">Manage Teachers</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Manage Meal Plans</h5>
+                        <p class="card-text">Create and manage meal plans for students and teachers.</p>
+                        <a href="@Url.Action("Index", "MealPlan")" class="btn btn-primary">Manage Meal Plans</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">View Exercises</h5>
+                        <p class="card-text">View exercises recommended for different meal plans.</p>
+                        <a href="@Url.Action("Index", "Exercise")" class="btn btn-primary">View Exercises</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">View Recipes</h5>
+                        <p class="card-text">Browse and manage recipes included in meal plans.</p>
+                        <a href="@Url.Action("Index", "Recipe")" class="btn btn-primary">View Recipes</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Add Reminder Notes</h5>
+                        <p class="card-text">Add notes for students or teachers with food allergies.</p>
+                        <a href="@Url.Action("Index", "ReminderNote")" class="btn btn-primary">Add Reminder Notes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</main>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

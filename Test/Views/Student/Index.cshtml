@@ -1,10 +1,10 @@
-﻿@model IEnumerable<Test.Models.TeacherDto>
+﻿@model IEnumerable<Test.Models.StudentDto>
 
 @{
-    ViewBag.Title = "Teachers";
+    ViewBag.Title = "Students";
 }
 
-<h2>Teachers</h2>
+<h2>Students</h2>
 
 <p>
     @Html.ActionLink("Create New", "New")
@@ -45,9 +45,9 @@
                     @Html.DisplayFor(modelItem => item.phone_number)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.teacher_id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.teacher_id }) |
-                    @Html.ActionLink("Delete", "DeleteConfirm", new { id = item.teacher_id })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.student_id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.student_id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.student_id })
                 </td>
             </tr>
         }

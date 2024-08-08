@@ -1,14 +1,52 @@
 ﻿@model IEnumerable<Test.Models.StudentDto>
+
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "Students";
 }
 
-<h2>List</h2>
+<h2>Students</h2>
 
+<p>
+    @Html.ActionLink("Create New", "New")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.first_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.last_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phone_number)
+        </th>
+        <th></th>
+    </tr>
 
-@foreach (var Student in Model)
-{
-    <div>
-        <a href="Details/@Student.student_id">@Student.first_name @Student.last_name</a>
-    </div>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.first_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.last_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phone_number)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.student_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.student_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.student_id })
+            </td>
+        </tr>
+    }
+
+</table>
