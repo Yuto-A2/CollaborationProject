@@ -9,17 +9,17 @@
 
     <div>
         <label for="first_name">First Name:</label>
-        <input type="text" name="first_name" id="first_name" />
+        <input type="text" name="first_name" id="first_name" /><span id="addfNameRequire"></span>
     </div>
 
     <div>
         <label for="last_name">Lasts Name:</label>
-        <input type="text" name="last_name" id="last_name" />
+        <input type="text" name="last_name" id="last_name" /><span id="addlNameRequire"></span>
     </div>
 
     <div>
         <label for="plan_name">Plan Name:</label>
-        <input type="text" name="plan_name" id="plan_name">
+        <input type="text" name="plan_name" id="plan_name"><span id="addMealRequire"></span>
     </div>
   
     <div>
@@ -27,3 +27,44 @@
     </div>
 </form>
 
+<script>
+    window.onload = function () {
+        const formHandle = document.forms.StudentMealPlanForm;
+        const firstName = document.getElementById("first_name");
+        const lastName = document.getElementById("last_name");
+        const planName = document.getElementById("plan_name");
+        const addfName = document.getElementById("addfNameRequire");
+        const addlName = document.getElementById("addlNameRequire");
+        const addmeal = document.getElementById("addMealRequire");
+        formHandle.onsubmit = function () {
+            var valid = true;
+            const fNameValue = formHandle.first_name.value;
+            const lNameValue = formHandle.last_name.value;
+            const mealValue = formHandle.plan_name.value;
+            if (fNameValue === "") {
+                firstName.style.background = "red";
+                firstName.focus();
+                addfName.innerHTML = "First Name is required.";
+                valid = false;
+            }
+
+            if (lNameValue === "") {
+                lastName.style.background = "red";
+                lastName.focus();
+                addlName.innerHTML = "Last Name is required.";
+                valid = false;
+            }
+
+            if (mealValue === "") {
+                planName.style.background = "red";
+                planName.focus();
+                addmeal.innerHTML = "Meal plan is required.";
+                valid = false;
+            }
+
+            return valid;
+        }
+    }
+
+
+</script>

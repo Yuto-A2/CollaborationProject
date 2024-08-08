@@ -25,7 +25,7 @@ namespace Test.Controllers
         /// curl localhost:44326/api/StudentMealPlanData/ListStudentMealPlans
         [HttpGet]
         [Route("api/StudentMealPlanData/ListStudentMealPlans")]
-        [ResponseType(typeof(StudentMealPlanDto))]
+        [ResponseType(typeof(IEnumerable<StudentMealPlanDto>))]
         public IHttpActionResult StudentMealPlans()
         {
             List<Models.StudentMealPlan> StudentMealPlans = db.StudentMealPlans.Include(smp => smp.Student).ToList();
@@ -52,10 +52,10 @@ namespace Test.Controllers
         /// <param name="id">students ID.</param>
         /// The id of the student.
         /// </param>
-        //GET: api/DiaryData/ListDiariesForStudent/1->
+        //GET: api/StudentMealPlanData/FindStudentMealPlan/1->
         //[{"contentId":1, "content": Fui a Mexio., "Date": May 30, "comment": Goode job, }],
         [HttpGet]
-        [Route("api/StudentMealPlanData/ListStudentMealPlansForStudent/{id}")]
+        [Route("api/StudentMealPlanData/FindStudentMealPlan/{id}")]
         [ResponseType(typeof(StudentMealPlanDto))]
         public IHttpActionResult ListStudentMealPlans(int id)
         {
@@ -67,9 +67,11 @@ namespace Test.Controllers
             StudentMealPlan.ForEach(d => StudentMealPlanDtos.Add(new StudentMealPlanDto()
             {
                 student_meal_plan_id = id,
+                student_id=d.student_id,
                 first_name = d.Student.first_name,
                 last_name = d.Student.last_name,
-                plan_name = d.MealPlan.plan_name
+                plan_name = d.MealPlan.plan_name,
+                plan_id = d.MealPlan.plan_id
             }));
 
             return Ok(StudentMealPlanDtos);

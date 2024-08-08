@@ -45,9 +45,9 @@ namespace Test.Controllers
         public ActionResult Details(int id)
         {
             DetailsTeacherMealPlan viewModel = new DetailsTeacherMealPlan();
-            //curl https://localhost:44326//api/TeacherMealPlanData/FindTeacherMealPlan/{id}
+            //curl https://localhost:44326//api/TeacherMealPlanData/ListTeacherMealPlansForTeacher/{id}
 
-            string url = "TeacherMealPlanData/FindTeacherMealPlan/" + id;
+            string url = "TeacherMealPlanData/ListTeacherMealPlansForTeacher/" + id;
 
             HttpResponseMessage response = client.GetAsync(url).Result;
 
