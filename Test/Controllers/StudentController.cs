@@ -248,6 +248,23 @@ namespace Test.Controllers
                 return RedirectToAction("Error");
             }
         }
+        //GET: Student/Delete/6
+        public ActionResult DeleteConfirm(int id)
+        {
+            string url = "studentdata/findstudent/" + id;
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            StudentDto selectedStudent = response.Content.ReadAsAsync<StudentDto>().Result;
+            return View(selectedStudent);
+        }
+
+        //POST: Student/Delete/6
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            string url = "studentdata/deletestudent/" + id;
+            HttpContent content = new StringContent("");
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
 
         /// <summary>
         /// Confirms the deletion of a student by sending a request to the API.

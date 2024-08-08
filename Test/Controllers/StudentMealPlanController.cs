@@ -45,9 +45,9 @@ namespace Test.Controllers
         public ActionResult Details(int id)
         {
             DetailsStudentMealPlan viewModel = new DetailsStudentMealPlan();
-            //curl https://localhost:44326//api/StudentMealPlanData/FindStudentMealPlan/{id}
+            //curl https://localhost:44326//api/StudentMealPlanData/ListStudentMealPlans/{id}
 
-            string url = "StudentMealPlanData/FindStudentMealPlan/" + id;
+            string url = "StudentMealPlanData/ListStudentMealPlans/" + id;
 
             HttpResponseMessage response = client.GetAsync(url).Result;
 
@@ -62,7 +62,7 @@ namespace Test.Controllers
 
             viewModel.SelectedStudentMealPlan = SelectedContent;
 
-            url = "StudentMealPlanData/StudentMealPlansForstudent/" + id;
+            url = "StudentMealPlanData/FindStudentMealPlan/" + id;
             response = client.GetAsync(url).Result;
             IEnumerable<StudentMealPlanDto> ResponsibleStudents = response.Content.ReadAsAsync<IEnumerable<StudentMealPlanDto>>().Result;
 
@@ -77,7 +77,7 @@ namespace Test.Controllers
         {
             string url = "StudentMealPlanData/ListStudentMealPlans";
             HttpResponseMessage response = client.GetAsync(url).Result;
-            IEnumerable<Test.Models.StudentMealPlanDto> studentMealPlanOptions = response.Content.ReadAsAsync<IEnumerable<Test.Models.StudentMealPlanDto>>().Result;
+            IEnumerable<Models.StudentMealPlanDto> studentMealPlanOptions = response.Content.ReadAsAsync<IEnumerable<Models.StudentMealPlanDto>>().Result;
             return View(studentMealPlanOptions);
         }
 
@@ -89,7 +89,7 @@ namespace Test.Controllers
             Debug.WriteLine(studentMealPlan.student_meal_plan_id);
 
             // Add StudentMealPlan to api
-            string url = "StudentMealPlanData/AddStudentMealPlan";
+            string url = "StudentMealPlanData/AddStudentMealPlan/";
 
             string jsonPayload = jss.Serialize(studentMealPlan);
             Debug.WriteLine(jsonPayload);

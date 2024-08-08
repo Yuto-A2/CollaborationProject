@@ -6,7 +6,7 @@
 <a href="/Workout/List">Go back to workout list</a>
 <h2>Workout Details</h2>
 
-<div>Date: @Model.SelectedWorkout.WorkoutDate</div>
+<div>Date: @Model.SelectedWorkout.WorkoutDate.ToString("D")</div>
 
 <a href="/Workout/Edit/@Model.SelectedWorkout.WorkoutId">Edit Workout</a>
 
@@ -21,7 +21,7 @@
     }
 
     <div>
-        Add new exercise to @Model.SelectedWorkout.WorkoutDate
+        Add new exercise to @Model.SelectedWorkout.WorkoutDate.ToString("D")'s workout
         <form method="POST" action="/Workout/Associate/@Model.SelectedWorkout.WorkoutId">
             <select name="ExerciseId">
                 @foreach (var exercise in Model.AvailableExercises)

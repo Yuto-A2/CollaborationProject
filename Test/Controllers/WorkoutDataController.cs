@@ -258,7 +258,16 @@ namespace Test.Controllers
         [ResponseType(typeof(Workout))]
         [HttpPost]
         public IHttpActionResult AddWorkout(Workout workout)
-        {
+        {   
+            //if (workout.student_id == null && workout.teacher_id == null)
+            //{
+            //    return BadRequest("A workout must be associated with either a student or a teacher");
+            //}
+            //if (workout.student_id != null && workout.teacher_id != null)
+            //{
+            //    return BadRequest("A workout cannot be associated with both a student and a teacher");
+            //}
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

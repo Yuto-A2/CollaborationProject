@@ -273,6 +273,14 @@
     <Compile Include="Migrations\202408070708251_test1.designer.cs">
       <DependentUpon>202408070708251_test1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202408082224483_WorkoutDate_string_to_DateTime.cs" />
+    <Compile Include="Migrations\202408082224483_WorkoutDate_string_to_DateTime.Designer.cs">
+      <DependentUpon>202408082224483_WorkoutDate_string_to_DateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202408082228502_teacher_and_student_ids_nullable.cs" />
+    <Compile Include="Migrations\202408082228502_teacher_and_student_ids_nullable.Designer.cs">
+      <DependentUpon>202408082228502_teacher_and_student_ids_nullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -487,6 +495,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202408070708251_test1.resx">
       <DependentUpon>202408070708251_test1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202408082224483_WorkoutDate_string_to_DateTime.resx">
+      <DependentUpon>202408082224483_WorkoutDate_string_to_DateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202408082228502_teacher_and_student_ids_nullable.resx">
+      <DependentUpon>202408082228502_teacher_and_student_ids_nullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

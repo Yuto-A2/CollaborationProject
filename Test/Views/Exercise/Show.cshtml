@@ -17,6 +17,7 @@
     <h2>Workouts Associated with @Model.SelectedExercise.ExerciseName</h2>
     @foreach (var workout in Model.AssociatedWorkouts)
     {
+        // may need to change this to control how dates are displayed
         <a href="/Workout/Show/@workout.WorkoutId">@workout.WorkoutDate</a> <br />
     }
 </div>

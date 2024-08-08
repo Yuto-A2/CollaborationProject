@@ -12,6 +12,7 @@ namespace Test.Models
         [Key]
         public int recipe_id { get; set; }
         public string quantity {  get; set; }
+        // made incorrectly
         [ForeignKey("Ingredient")]
         public int ingredient_id { get; set; }
         public virtual Ingredient Ingredient { get; set; }

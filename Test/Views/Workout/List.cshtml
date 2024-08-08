@@ -9,5 +9,5 @@
 
 @foreach (var workout in Model)
 {
-    <div><a href="Show/@workout.WorkoutId">Date: @workout.WorkoutDate</a></div>
+    <div><a href="Show/@workout.WorkoutId">Date: @workout.WorkoutDate.ToString("D")</a></div>
 } 
