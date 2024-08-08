@@ -273,6 +273,10 @@
     <Compile Include="Migrations\202407291956478_NutritionalNeedsMealPlans.Designer.cs">
       <DependentUpon>202407291956478_NutritionalNeedsMealPlans.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202408082224483_WorkoutDate_string_to_DateTime.cs" />
+    <Compile Include="Migrations\202408082224483_WorkoutDate_string_to_DateTime.Designer.cs">
+      <DependentUpon>202408082224483_WorkoutDate_string_to_DateTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -506,6 +510,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202407291956478_NutritionalNeedsMealPlans.resx">
       <DependentUpon>202407291956478_NutritionalNeedsMealPlans.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202408082224483_WorkoutDate_string_to_DateTime.resx">
+      <DependentUpon>202408082224483_WorkoutDate_string_to_DateTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
