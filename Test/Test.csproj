@@ -281,6 +281,10 @@
     <Compile Include="Migrations\202408082228502_teacher_and_student_ids_nullable.Designer.cs">
       <DependentUpon>202408082228502_teacher_and_student_ids_nullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202408091803526_StudentMealPic.cs" />
+    <Compile Include="Migrations\202408091803526_StudentMealPic.designer.cs">
+      <DependentUpon>202408091803526_StudentMealPic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -501,6 +505,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202408082228502_teacher_and_student_ids_nullable.resx">
       <DependentUpon>202408082228502_teacher_and_student_ids_nullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202408091803526_StudentMealPic.resx">
+      <DependentUpon>202408091803526_StudentMealPic.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
