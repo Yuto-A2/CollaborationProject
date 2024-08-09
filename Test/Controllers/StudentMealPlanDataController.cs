@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Test.Migrations;
@@ -26,6 +28,7 @@ namespace Test.Controllers
         [HttpGet]
         [Route("api/StudentMealPlanData/ListStudentMealPlans")]
         [ResponseType(typeof(IEnumerable<StudentMealPlanDto>))]
+        
         public IHttpActionResult StudentMealPlans()
         {
             List<Models.StudentMealPlan> StudentMealPlans = db.StudentMealPlans.Include(smp => smp.Student).ToList();
@@ -37,7 +40,9 @@ namespace Test.Controllers
                 student_id = plan.student_id,
                 first_name = plan.Student.first_name,
                 last_name = plan.Student.last_name,
-                plan_id = plan.plan_id
+                plan_id = plan.plan_id,
+                //StudentMealPlanHasPic = plan.StudentMealPlanHasPic,
+                //PicExtension = plan.PicExtension
             }));
 
             return Ok(StudentMealPlanDtos);
@@ -57,6 +62,7 @@ namespace Test.Controllers
         [HttpGet]
         [Route("api/StudentMealPlanData/FindStudentMealPlan/{id}")]
         [ResponseType(typeof(StudentMealPlanDto))]
+        
         public IHttpActionResult ListStudentMealPlans(int id)
         {
             //SQL equivalent:
@@ -94,6 +100,7 @@ namespace Test.Controllers
         [ResponseType(typeof(Models.StudentMealPlan))]
         [Route("api/StudentMealPlanData/AddStudentMealPlan/")]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult AddStudentMealPlan(Models.StudentMealPlan studentMealPlan)
         {
             if (!ModelState.IsValid)
@@ -158,6 +165,45 @@ namespace Test.Controllers
                 }
             }
             return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        /// <summary>
+        /// Removes an association between a particular keeper and a particular animal
+        /// </summary>
+        /// <param name="animalid">The animal ID primary key</param>
+        /// <param name="keeperid">The keeper ID primary key</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <example>
+        /// POST api/AnimalData/AssociateAnimalWithKeeper/9/1
+        /// </example>
+        [HttpPost]
+        [Route("api/StudentMealPlanData/UnAssociateStudetMealPlanWithStudent/{studentmealplanid}/{studentid}")]
+        [Authorize]
+        public IHttpActionResult UnAssociateStudetMealPlanWithStudent(int student_meal_plan_id, int student_id)
+        {
+
+            Models.StudentMealPlan SelectedStudentMealPlan = db.StudentMealPlans.Include(a => a.student_id).Where(a => a.student_meal_plan_id == student_id).FirstOrDefault();
+            Models.Student SelectedStudent = db.Students.Find(student_id);
+
+            if (SelectedStudentMealPlan == null || SelectedStudent == null)
+            {
+                return NotFound();
+            }
+
+            Debug.WriteLine("input animal id is: " + student_id);
+            Debug.WriteLine("selected animal name is: " + SelectedStudentMealPlan.student_meal_plan_id);
+            Debug.WriteLine("input keeper id is: " + student_id);
+            Debug.WriteLine("selected keeper name is: " + SelectedStudent.first_name);
+
+
+            //SelectedStudent.first_name.Remove(SelectedStudentMealPlan);
+            db.SaveChanges();
+
+            return Ok();
         }
 
         /// <summary>

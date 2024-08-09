@@ -83,7 +83,7 @@ namespace Test.Controllers
 
         // POST: StudentMealPlan/Create
         [HttpPost]
-        public ActionResult Create(Test.Models.StudentMealPlan studentMealPlan)
+        public ActionResult Create(Models.StudentMealPlan studentMealPlan)
         {
             Debug.WriteLine("The JSON payload is:");
             Debug.WriteLine(studentMealPlan.student_meal_plan_id);
@@ -119,7 +119,7 @@ namespace Test.Controllers
         }
         //POST: StudentMealPlan/Update/6
         [HttpPost]
-        public ActionResult Update(int id, Models.StudentMealPlan StudentMealPlan)
+        public ActionResult Update(int id, Models.StudentMealPlan StudentMealPlan, HttpPostedFileBase StudentMealPlanHasPic)
         {
             string url = "studentmealplandata/updatestudentmealplan/" + id;
             string jsonpayload = jss.Serialize(StudentMealPlan);
@@ -127,7 +127,7 @@ namespace Test.Controllers
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;
             Debug.WriteLine(content);
-            if (response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode && StudentMealPlanHasPic != null)
             {
                 return RedirectToAction("List");
             }

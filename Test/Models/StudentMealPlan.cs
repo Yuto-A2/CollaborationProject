@@ -12,6 +12,8 @@ namespace Test.Models
     {
         [Key]
         public int student_meal_plan_id { get; set; }
+       // public bool StudentMealPlanHasPic { get; set; }
+        //public string PicExtension { get; set; }
 
         // each individual student meal plan applies to one student
         // this table has the foreign key because studentmealplan depends on the student
@@ -35,6 +37,8 @@ namespace Test.Models
 
         public int plan_id { get; set; }
         public string plan_name { get; set; }
+       // public bool StudentMealPlanHasPic { get; set; }
+        //public string PicExtension { get; set; }
 
     }
 }
