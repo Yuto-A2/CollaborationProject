@@ -257,9 +257,21 @@ namespace Test.Controllers
             return View(selectedStudent);
         }
 
+<<<<<<< HEAD
   }
    
 
+=======
+        //POST: Student/Delete/6
+        //[HttpPost]
+        //public ActionResult Delete(int id)
+        //{
+        //    string url = "studentdata/deletestudent/" + id;
+        //    HttpContent content = new StringContent("");
+        //    content.Headers.ContentType.MediaType = "application/json";
+        //    HttpResponseMessage response = client.PostAsync(url, content).Result;
+        //}
+>>>>>>> ee4df54eea3aa6320c7529ff1a748400a5f1479c
         /// <summary>
         /// Confirms the deletion of a student by sending a request to the API.
         /// </summary>
