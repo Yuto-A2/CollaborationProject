@@ -17,7 +17,7 @@ namespace Test.Models
         public string phone_number { get; set; }
 
         // each teacher has one individual teacher meal plan
-        //public TeacherMealPlan TeacherMealPlan { get; set; }
+        public TeacherMealPlan TeacherMealPlan { get; set; }
         // may need to add virtual attribute later
 
 

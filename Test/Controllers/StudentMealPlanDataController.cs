@@ -41,8 +41,8 @@ namespace Test.Controllers
                 first_name = plan.Student.first_name,
                 last_name = plan.Student.last_name,
                 plan_id = plan.plan_id,
-                StudentMealPlanHasPic = plan.StudentMealPlanHasPic,
-                PicExtension = plan.PicExtension
+                //StudentMealPlanHasPic = plan.StudentMealPlanHasPic,
+                //PicExtension = plan.PicExtension
             }));
 
             return Ok(StudentMealPlanDtos);
