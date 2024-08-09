@@ -7,13 +7,13 @@ namespace Test.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class RecipeTag : IMigrationMetadata
+    public sealed partial class collab : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(RecipeTag));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(collab));
         
         string IMigrationMetadata.Id
         {
-            get { return "202407280436349_RecipeTag"; }
+            get { return "202408091429118_collab"; }
         }
         
         string IMigrationMetadata.Source

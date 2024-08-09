@@ -258,14 +258,14 @@ namespace Test.Controllers
         }
 
         //POST: Student/Delete/6
-        [HttpPost]
-        public ActionResult Delete(int id)
-        {
-            string url = "studentdata/deletestudent/" + id;
-            HttpContent content = new StringContent("");
-            content.Headers.ContentType.MediaType = "application/json";
-            HttpResponseMessage response = client.PostAsync(url, content).Result;
-
+        //[HttpPost]
+        //public ActionResult Delete(int id)
+        //{
+        //    string url = "studentdata/deletestudent/" + id;
+        //    HttpContent content = new StringContent("");
+        //    content.Headers.ContentType.MediaType = "application/json";
+        //    HttpResponseMessage response = client.PostAsync(url, content).Result;
+        //}
         /// <summary>
         /// Confirms the deletion of a student by sending a request to the API.
         /// </summary>

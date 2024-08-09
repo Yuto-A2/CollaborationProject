@@ -13,14 +13,12 @@ namespace Test.Models
         [Key]
         public int student_meal_plan_id { get; set; }
 
-        // each individual student meal plan applies to one student
-        // this table has the foreign key because studentmealplan depends on the student
+        // many to many relationship between students and meal plans, since this is a bridging table
+        // use of foreign key - can add additional information
         [ForeignKey("Student")]
         public int student_id { get; set; }
         public virtual Student Student { get; set; }
 
-        // an individual student meal plan can only belong to one meal plan tier
-        // each meal plan tier can apply to many individual student meal plans
         [ForeignKey("MealPlan")]
         public int plan_id { get; set; }
         public virtual MealPlan MealPlan { get; set; }

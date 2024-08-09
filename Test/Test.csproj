@@ -197,89 +197,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202407261411285_initial.cs" />
-    <Compile Include="Migrations\202407261411285_initial.Designer.cs">
-      <DependentUpon>202407261411285_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202407261846101_ExercisePortion.cs" />
-    <Compile Include="Migrations\202407261846101_ExercisePortion.Designer.cs">
-      <DependentUpon>202407261846101_ExercisePortion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202407280410532_Category.cs" />
-    <Compile Include="Migrations\202407280410532_Category.designer.cs">
-      <DependentUpon>202407280410532_Category.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202407280415145_Recipe.cs" />
-    <Compile Include="Migrations\202407280415145_Recipe.designer.cs">
-      <DependentUpon>202407280415145_Recipe.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202407280419570_MealPlan.cs" />
-    <Compile Include="Migrations\202407280419570_MealPlan.designer.cs">
-      <DependentUpon>202407280419570_MealPlan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202407280427160_Tag.cs" />
-    <Compile Include="Migrations\202407280427160_Tag.designer.cs">
-      <DependentUpon>202407280427160_Tag.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202407280436349_RecipeTag.cs" />
-    <Compile Include="Migrations\202407280436349_RecipeTag.designer.cs">
-      <DependentUpon>202407280436349_RecipeTag.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202407280454279_Student.cs" />
-    <Compile Include="Migrations\202407280454279_Student.designer.cs">
-      <DependentUpon>202407280454279_Student.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202407280455424_Teacher.cs" />
-    <Compile Include="Migrations\202407280455424_Teacher.designer.cs">
-      <DependentUpon>202407280455424_Teacher.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202407280502584_ReminderNote.cs" />
-    <Compile Include="Migrations\202407280502584_ReminderNote.designer.cs">
-      <DependentUpon>202407280502584_ReminderNote.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202407280517318_Ingredient.cs" />
-    <Compile Include="Migrations\202407280517318_Ingredient.designer.cs">
-      <DependentUpon>202407280517318_Ingredient.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202407280525162_Meal.cs" />
-    <Compile Include="Migrations\202407280525162_Meal.designer.cs">
-      <DependentUpon>202407280525162_Meal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202407280530231_StudentMealPlan.cs" />
-    <Compile Include="Migrations\202407280530231_StudentMealPlan.designer.cs">
-      <DependentUpon>202407280530231_StudentMealPlan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202407280535410_TeacherMealPlan.cs" />
-    <Compile Include="Migrations\202407280535410_TeacherMealPlan.designer.cs">
-      <DependentUpon>202407280535410_TeacherMealPlan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202407291908490_WorkoutTeacherStudentFks.cs" />
-    <Compile Include="Migrations\202407291908490_WorkoutTeacherStudentFks.Designer.cs">
-      <DependentUpon>202407291908490_WorkoutTeacherStudentFks.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202407291935520_Nutrition.cs" />
-    <Compile Include="Migrations\202407291935520_Nutrition.Designer.cs">
-      <DependentUpon>202407291935520_Nutrition.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202407291939156_need_profile.cs" />
-    <Compile Include="Migrations\202407291939156_need_profile.Designer.cs">
-      <DependentUpon>202407291939156_need_profile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202407291956478_NutritionalNeedsMealPlans.cs" />
-    <Compile Include="Migrations\202407291956478_NutritionalNeedsMealPlans.Designer.cs">
-      <DependentUpon>202407291956478_NutritionalNeedsMealPlans.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202408070708251_test1.cs" />
-    <Compile Include="Migrations\202408070708251_test1.designer.cs">
-      <DependentUpon>202408070708251_test1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202408082224483_WorkoutDate_string_to_DateTime.cs" />
-    <Compile Include="Migrations\202408082224483_WorkoutDate_string_to_DateTime.Designer.cs">
-      <DependentUpon>202408082224483_WorkoutDate_string_to_DateTime.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202408082228502_teacher_and_student_ids_nullable.cs" />
-    <Compile Include="Migrations\202408082228502_teacher_and_student_ids_nullable.Designer.cs">
-      <DependentUpon>202408082228502_teacher_and_student_ids_nullable.cs</DependentUpon>
+    <Compile Include="Migrations\202408091429118_collab.cs" />
+    <Compile Include="Migrations\202408091429118_collab.Designer.cs">
+      <DependentUpon>202408091429118_collab.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -439,71 +359,6 @@
     <Folder Include="Views\TeacherData\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202407261411285_initial.resx">
-      <DependentUpon>202407261411285_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202407261846101_ExercisePortion.resx">
-      <DependentUpon>202407261846101_ExercisePortion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202407280410532_Category.resx">
-      <DependentUpon>202407280410532_Category.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202407280415145_Recipe.resx">
-      <DependentUpon>202407280415145_Recipe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202407280419570_MealPlan.resx">
-      <DependentUpon>202407280419570_MealPlan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202407280427160_Tag.resx">
-      <DependentUpon>202407280427160_Tag.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202407280436349_RecipeTag.resx">
-      <DependentUpon>202407280436349_RecipeTag.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202407280454279_Student.resx">
-      <DependentUpon>202407280454279_Student.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202407280455424_Teacher.resx">
-      <DependentUpon>202407280455424_Teacher.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202407280502584_ReminderNote.resx">
-      <DependentUpon>202407280502584_ReminderNote.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202407280517318_Ingredient.resx">
-      <DependentUpon>202407280517318_Ingredient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202407280525162_Meal.resx">
-      <DependentUpon>202407280525162_Meal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202407280530231_StudentMealPlan.resx">
-      <DependentUpon>202407280530231_StudentMealPlan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202407280535410_TeacherMealPlan.resx">
-      <DependentUpon>202407280535410_TeacherMealPlan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202407291908490_WorkoutTeacherStudentFks.resx">
-      <DependentUpon>202407291908490_WorkoutTeacherStudentFks.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202407291935520_Nutrition.resx">
-      <DependentUpon>202407291935520_Nutrition.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202407291939156_need_profile.resx">
-      <DependentUpon>202407291939156_need_profile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202407291956478_NutritionalNeedsMealPlans.resx">
-      <DependentUpon>202407291956478_NutritionalNeedsMealPlans.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202408070708251_test1.resx">
-      <DependentUpon>202408070708251_test1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202408082224483_WorkoutDate_string_to_DateTime.resx">
-      <DependentUpon>202408082224483_WorkoutDate_string_to_DateTime.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202408082228502_teacher_and_student_ids_nullable.resx">
-      <DependentUpon>202408082228502_teacher_and_student_ids_nullable.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
     <Content Include="Content\bootstrap.rtl.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
@@ -529,6 +384,11 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202408091429118_collab.resx">
+      <DependentUpon>202408091429118_collab.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
