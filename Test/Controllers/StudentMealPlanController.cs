@@ -121,6 +121,7 @@ namespace Test.Controllers
         [HttpPost]
         public ActionResult Update(int id, Models.StudentMealPlan StudentMealPlan, HttpPostedFileBase StudentMealPlanHasPic)
         {
+            GetApplicationCookie();
             string url = "studentmealplandata/updatestudentmealplan/" + id;
             string jsonpayload = jss.Serialize(StudentMealPlan);
             HttpContent content = new StringContent(jsonpayload);
@@ -129,6 +130,12 @@ namespace Test.Controllers
             Debug.WriteLine(content);
             if (response.IsSuccessStatusCode && StudentMealPlanHasPic != null)
             {
+                Debug.WriteLine("Calling Update Image method.");
+                url = "StudentMealPlan/UploadStudentMealPlanPic" + id;
+                MultipartFormDataContent requestcontent = new MultipartFormDataContent();
+                HttpContent imagecontent = new StreamContent(StudentMealPlanHasPic.InputStream);
+                requestcontent.Add(imagecontent, "StudentMealPlanPic", StudentMealPlanHasPic.FileName);
+                response = client.PostAsync(url, requestcontent).Result;
                 return RedirectToAction("List");
             }
             else
