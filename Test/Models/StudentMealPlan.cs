@@ -18,6 +18,8 @@ namespace Test.Models
         [ForeignKey("Student")]
         public int student_id { get; set; }
         public virtual Student Student { get; set; }
+        public bool StudentMealPlanHasPic { get; set; }
+        public string PicExtension { get; set; }
 
         [ForeignKey("MealPlan")]
         public int plan_id { get; set; }

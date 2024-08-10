@@ -119,6 +119,7 @@ namespace Test.Controllers
         }
         //POST: StudentMealPlan/Update/6
         [HttpPost]
+        [Authorize]
         public ActionResult Update(int id, Models.StudentMealPlan StudentMealPlan, HttpPostedFileBase StudentMealPlanHasPic)
         {
             GetApplicationCookie();
