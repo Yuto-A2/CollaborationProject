@@ -2,7 +2,11 @@
 
 Yuto, Noah, Breno
 
-Yuto...TeacherMealPlan, StudentMealPlan, Student. Teacher
+Yuto -
+---
+TeacherMealPlan, StudentMealPlan, Student. Teacher.
+- Extra work...Can edit pictures in StudentMealPlan
+---
 
 Noah - documentation, fixing some relationships in models, NutritionalNeeds model, workouts & exercises
 looked into extra feature of calculating Activity level, nutritional needs and meal plan recommendation
