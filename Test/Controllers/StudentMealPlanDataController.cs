@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Net.Http;
 using System.Web;
@@ -42,7 +44,8 @@ namespace Test.Controllers
                 last_name = plan.Student.last_name,
                 plan_id = plan.plan_id,
                 StudentMealPlanHasPic = plan.StudentMealPlanHasPic,
-                PicExtension = plan.PicExtension
+                PicExtension = plan.PicExtension,
+                ImagePath = "/Content/Images/StudentMealPlan/" + (plan.StudentMealPlanHasPic ? plan.StudentMealPlanHasPic.ToString() + "." + plan.PicExtension :"defalut.jpg")
             }));
 
             return Ok(StudentMealPlanDtos);
@@ -77,7 +80,10 @@ namespace Test.Controllers
                 first_name = d.Student.first_name,
                 last_name = d.Student.last_name,
                 plan_name = d.MealPlan.plan_name,
-                plan_id = d.MealPlan.plan_id
+                plan_id = d.MealPlan.plan_id,
+                StudentMealPlanHasPic = plan.StudentMealPlanHasPic,
+                PicExtension = plan.PicExtension,
+                ImagePath = "/Content/Images/StudentMealPlan/" + (plan.StudentMealPlanHasPic ? StudentMealPlan.student_meal_plan_id.ToString() + "." + plan.PicExtension : "defalut.jpg")
             }));
 
             return Ok(StudentMealPlanDtos);
@@ -246,6 +252,84 @@ namespace Test.Controllers
         private bool StudentMealPlanExists(int id)
         {
             return db.StudentMealPlans.Count(e => e.student_meal_plan_id == id) > 0;
+        }
+
+        /// <summary>
+        /// Receives student meal picture data, uploads it to the webserver and updates the student meal plan's haPic option
+        /// </summary>
+        /// <param name="id">the student meal plan's id</param>
+        /// <returns>
+        ///status code 200 if successful.
+        /// </returns>
+        /// <example>
+        /// curl -F studentmealplanpic=@file.jpg "http://localhost:xx/api/studentmealplandata/uploadstudentmealplanpic/2"
+        /// POST: api/StudentMealPlanData/UpdateStudentMealPlanPic/2
+        /// FORM DATA: image
+        /// </example>
+
+        [HttpPost]
+        public IHttpActionResult UploadStudentMealPlanPic(int id)
+        {
+            bool haspic = false;
+            string picextension = null; // `picextenstion` を `picextension` に修正
+            if (Request.Content.IsMimeMultipartContent())
+            {
+                Debug.WriteLine("Received multipart form data.");
+                int numfiles = HttpContext.Current.Request.Files.Count;
+                Debug.WriteLine("Files Received: " + numfiles);
+
+                // Check if a file is posted
+                if (numfiles == 1 && HttpContext.Current.Request.Files[0] != null)
+                {
+                    var studentMealPlanPic = HttpContext.Current.Request.Files[0];
+
+                    // Check if the file is empty
+                    if (studentMealPlanPic.ContentLength > 0)
+                    {
+                        // Establish valid file types (can be changed to other file extensions if desired)
+                        var valtypes = new[] { "jpeg", "jpg", "png", "gif" };
+                        var extension = Path.GetExtension(studentMealPlanPic.FileName).Substring(1);
+
+                        // Check the extension of the file
+                        if (valtypes.Contains(extension))
+                        {
+                            try
+                            {
+                                // File name is the id of the image
+                                string fn = id + "." + extension;
+
+                                // Get a direct file path to ~/Content/Images/StudentMealPlans/{id}.{extension}
+                                string path = Path.Combine(HttpContext.Current.Server.MapPath("~/Content/Images/StudentMealPlans/"), fn);
+
+                                // Save the file
+                                studentMealPlanPic.SaveAs(path);
+
+                                // If these are all successful then we can set these fields
+                                haspic = true;
+                                picextension = extension;
+
+                                // Update the student meal plan haspic and picextension fields in the database
+                                StudentMealPlan SelectedStudentMealPlan = db.StudentMealPlans.Find(id);
+                                if (SelectedStudentMealPlan != null)
+                                {
+                                    SelectedStudentMealPlan.StudentMealPlanHasPic = haspic;
+                                    SelectedStudentMealPlan.PicExtension = picextension;
+                                    db.Entry(SelectedStudentMealPlan).State = EntityState.Modified;
+                                    db.SaveChanges();
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Debug.WriteLine("Student meal plan image was not saved successfully.");
+                                Debug.WriteLine("Exception: " + ex);
+                                return BadRequest();
+                            }
+                        }
+                    }
+                }
+                return Ok(); // Proper placement inside the method
+            }
+            return BadRequest(); // Return a bad request if the content is not multipart
         }
     }
 }

@@ -10,6 +10,21 @@
 <p>Last name: @Model.SelectedStudentMealPlan.last_name</p>
 <p>Meal plan: @Model.SelectedStudentMealPlan.plan_name</p>
 
+<div>
+    @{
+    string imageurl = "/Content/Images/StudentMealPlan/default.jpg";
+if (Model.SelectedStudentMealPlan.StudentMealPlanHasPic){
+imageurl = "/Content/Images/StudentMealPlan" + Model.SelectedStudentMealPlan.StudentMealPlanID + "."+ Model.SelectedStudentMealPlan.PicExtension;
+}}
+</div>
 
-<h2>Details</h2>
+<div>
+    <img style="display:block; max-width:100%;" alt="@Model.SelectedStudentMealPlan.first_name" src="@imageurl"/>
+</div>
+
+
+
+
+
+
 

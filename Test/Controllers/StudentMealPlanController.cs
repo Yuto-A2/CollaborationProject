@@ -8,9 +8,6 @@ using System.Diagnostics;
 using Test.Models;
 using Test.Models.ViewModels;
 using System.Web.Script.Serialization;
-using Test.Migrations;
-using System.Web.Http.Dispatcher;
-using Microsoft.Owin.Security.Provider;
 
 namespace Test.Controllers
 {
@@ -18,15 +15,35 @@ namespace Test.Controllers
     {
         private static readonly HttpClient client;
         private JavaScriptSerializer jss = new JavaScriptSerializer();
+
         static StudentMealPlanController()
         {
-            client = new HttpClient();
+            HttpClientHandler handler = new HttpClientHandler()
+            {
+                AllowAutoRedirect = false,
+                UseCookies = false
+            };
+            client = new HttpClient(handler);
             client.BaseAddress = new Uri("https://localhost:44326/api/");
+        }
+
+        private void GetApplicationCookie()
+        {
+            string token = "";
+            client.DefaultRequestHeaders.Remove("Cookie");
+            if (!User.Identity.IsAuthenticated) return;
+
+            HttpCookie cookie = System.Web.HttpContext.Current.Request.Cookies.Get(".AspNet.ApplicationCookie");
+            if (cookie != null) token = cookie.Value;
+            Debug.WriteLine("Token Submitted is : " + token);
+            if (token != "") client.DefaultRequestHeaders.Add("Cookie", ".AspNet.ApplicationCookie=" + token);
+
+            return;
         }
 
         // GET: StudentMealPlan/List
         public ActionResult List()
-        {
+           {
             //curl localhost:44326/api/StudentMealPlanData/ListStudentMealPlans 
             //objective: communicate with our StudentMealPlan data api to retrieve a list of StudentMealPlans
 

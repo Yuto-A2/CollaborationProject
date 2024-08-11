@@ -20,6 +20,7 @@ namespace Test.Models
         public virtual Student Student { get; set; }
         public bool StudentMealPlanHasPic { get; set; }
         public string PicExtension { get; set; }
+        public string ImagePath { get; set; }
 
         [ForeignKey("MealPlan")]
         public int plan_id { get; set; }
@@ -35,6 +36,7 @@ namespace Test.Models
 
         public int plan_id { get; set; }
         public string plan_name { get; set; }
-
+        public bool StudentMealPlanHasPic { get; set; }
+        public string PicExtension { get; set; }
     }
 }
