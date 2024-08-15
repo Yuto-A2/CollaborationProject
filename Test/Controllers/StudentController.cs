@@ -256,51 +256,8 @@ namespace Test.Controllers
             StudentDto selectedStudent = response.Content.ReadAsAsync<StudentDto>().Result;
             return View(selectedStudent);
         }
-
-<<<<<<< HEAD
   }
    
 
-=======
-        //POST: Student/Delete/6
-        //[HttpPost]
-        //public ActionResult Delete(int id)
-        //{
-        //    string url = "studentdata/deletestudent/" + id;
-        //    HttpContent content = new StringContent("");
-        //    content.Headers.ContentType.MediaType = "application/json";
-        //    HttpResponseMessage response = client.PostAsync(url, content).Result;
-        //}
->>>>>>> ee4df54eea3aa6320c7529ff1a748400a5f1479c
-        /// <summary>
-        /// Confirms the deletion of a student by sending a request to the API.
-        /// </summary>
-        /// <param name="id">The ID of the student to delete.</param>
-        /// <returns>Redirects to the List view if successful, otherwise to an error page.</returns>
-        // POST: Student/Delete/16
-        //[HttpPost, ActionName("Delete")]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    // URL for the API request, including the student ID.
-        //    string url = "studentdata/deletestudent/" + id;
-
-        //    // Create an empty HttpContent for the request body.
-        //    HttpContent content = new StringContent("");
-
-        //    // Synchronous call to the API to delete the student.
-        //    HttpResponseMessage response = client.PostAsync(url, content).Result;
-
-        //    // If the response is successful, redirect to the List view.
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        return RedirectToAction("List");
-        //    }
-        //    else
-        //    {
-        //        // Log the error response content and redirect to the error page.
-        //        Debug.WriteLine("DeleteConfirmed Error Response: " + response.Content.ReadAsStringAsync().Result);
-        //        return RedirectToAction("Error");
-        //    }
-        //}
-    }
+}
 
