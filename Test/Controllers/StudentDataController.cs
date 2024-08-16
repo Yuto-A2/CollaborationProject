@@ -44,6 +44,42 @@ namespace Test.Controllers
 
             return Ok(StudentDtos);
         }
+
+        /// <summary>
+        /// Returns a student in the system
+        /// </summary>
+        /// <param name="id">The primary key of the student</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: A student in the systme matching up to the student id primary key
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <example>
+        /// GET: api/StudentData/FindStudent/2
+        /// </example>
+        [ResponseType(typeof(StudentDto))]
+        [Route("api/StudentData/FindStudent/{id}")]
+        [HttpGet]
+        public IHttpActionResult FindStudent(int id)
+        {
+            Student Student = db.Students.Find(id);
+            StudentDto StudentDto = new StudentDto()
+            {
+                student_id = Student.student_id,
+                first_name = Student.first_name,
+                last_name = Student.last_name,
+                email = Student.email,
+                phone_number = Student.phone_number
+            };
+            if (Student == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(StudentDto);
+        }
+
         ///<summary>
         ///Returns Studnents in the system not caring for a particular student.
         /// </summary>
@@ -122,11 +158,19 @@ namespace Test.Controllers
         {
             if (!ModelState.IsValid)
             {
+                Debug.WriteLine("Model state is invalid");
                 return BadRequest(ModelState);
             }
 
             if (id != Student.student_id)
             {
+                Debug.WriteLine("id mismatch");
+                Debug.WriteLine("GET parameter: " + id);
+                Debug.WriteLine("POST parameter: " + Student.student_id);
+                Debug.WriteLine("POST parameter: " + Student.first_name);
+                Debug.WriteLine("POST parameter: " + Student.last_name);
+                Debug.WriteLine("POST parameter: " + Student.email);
+
                 return BadRequest();
             }
 

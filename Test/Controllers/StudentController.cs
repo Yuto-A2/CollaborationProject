@@ -27,26 +27,6 @@ namespace Test.Controllers
         }
 
         /// <summary>
-        /// Fetches the list of students from the API and displays it on the Index view.
-        /// </summary>
-        /// <returns>Returns a view with a list of students.</returns>
-        // GET: Student/Index
-        public ActionResult Index()
-        {
-            // URL for the API request.
-            string url = "studentdata/liststudents";
-
-            // Synchronous call to the API to fetch the student data.
-            HttpResponseMessage response = client.GetAsync(url).Result;
-
-            // Deserialize the response content to a list of StudentDto.
-            IEnumerable<StudentDto> Students = response.Content.ReadAsAsync<IEnumerable<StudentDto>>().Result;
-
-            // Pass the list of students to the view.
-            return View(Students);
-        }
-
-        /// <summary>
         /// Fetches the list of students from the API and displays it on the List view.
         /// </summary>
         /// <returns>Returns a view with a list of students.</returns>
@@ -54,7 +34,8 @@ namespace Test.Controllers
         public ActionResult List()
         {
             // URL for the API request.
-            string url = "studentdata/liststudents";
+            // curl https://localhost:44326/api/StudentData/liststudents
+            string url = "StudentData/liststudents";
 
             // Synchronous call to the API to fetch the student data.
             HttpResponseMessage response = client.GetAsync(url).Result;
@@ -75,7 +56,8 @@ namespace Test.Controllers
         public ActionResult Details(int id)
         {
             // URL for the API request, including the student ID.
-            string url = "studentdata/findstudent/" + id;
+            // curl https://localhost:44326/api/StudentData/FindStudent/{id}
+            string url = "StudentData/findStudent/" + id;
 
             // Synchronous call to the API to fetch the student data.
             HttpResponseMessage response = client.GetAsync(url).Result;
@@ -126,7 +108,7 @@ namespace Test.Controllers
         public ActionResult Create(StudentDto Student)
         {
             // URL for the API request.
-            string url = "studentdata/addstudent";
+            string url = "StudentData/AddStudent";
 
             // Serialize the student object to JSON format.
             string jsonpayload = jss.Serialize(Student);
@@ -160,7 +142,7 @@ namespace Test.Controllers
         public ActionResult Edit(int id)
         {
             // URL for the API request, including the student ID.
-            string url = "studentdata/findstudent/" + id;
+            string url = "StudentData/FindStudent/" + id;
 
             // Synchronous call to the API to fetch the student data.
             HttpResponseMessage response = client.GetAsync(url).Result;
@@ -193,7 +175,7 @@ namespace Test.Controllers
         public ActionResult Update(int id, StudentDto Student)
         {
             // URL for the API request, including the student ID.
-            string url = "studentdata/updatestudent/" + id;
+            string url = "StudentData/UpdateStudent/" + id;
 
             // Serialize the student object to JSON format.
             string jsonpayload = jss.Serialize(Student);
@@ -227,7 +209,7 @@ namespace Test.Controllers
         public ActionResult Delete(int id)
         {
             // URL for the API request, including the student ID.
-            string url = "studentdata/findstudent/" + id;
+            string url = "StudentData/FindStudent/" + id;
 
             // Synchronous call to the API to fetch the student data.
             HttpResponseMessage response = client.GetAsync(url).Result;
@@ -251,7 +233,7 @@ namespace Test.Controllers
         //GET: Student/Delete/6
         public ActionResult DeleteConfirm(int id)
         {
-            string url = "studentdata/findstudent/" + id;
+            string url = "StudentData/FindStudent/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             StudentDto selectedStudent = response.Content.ReadAsAsync<StudentDto>().Result;
             return View(selectedStudent);
