@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace Test.Models
@@ -16,6 +17,7 @@ namespace Test.Models
         public string email { get; set; }
         public string phone_number { get; set; }
     }
+    
     public class StudentDto
     {
         public int student_id { get; set; }

@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Diagnostics;
@@ -78,6 +79,13 @@ namespace Test.Controllers
             }
 
             return Ok(StudentDto);
+        }
+
+        [Route("api/StudentData/Test")]
+        [HttpGet]
+        public IHttpActionResult Test()
+        {
+            return Ok("This is a test");
         }
 
         ///<summary>
@@ -190,6 +198,7 @@ namespace Test.Controllers
         [HttpPost]
         public IHttpActionResult UpdateStudent(int id, Student Student)
         {
+            Debug.WriteLine("Reached update student method");
             if (!ModelState.IsValid)
             {
                 Debug.WriteLine("Model state is invalid");
@@ -204,6 +213,7 @@ namespace Test.Controllers
                 Debug.WriteLine("POST parameter: " + Student.first_name);
                 Debug.WriteLine("POST parameter: " + Student.last_name);
                 Debug.WriteLine("POST parameter: " + Student.email);
+                Debug.WriteLine("POST parameter: " + Student.phone_number);
 
                 return BadRequest();
             }
@@ -218,6 +228,7 @@ namespace Test.Controllers
             {
                 if (!StudentExists(id))
                 {
+                    Debug.WriteLine("student not found");
                     return NotFound();
                 }
                 else
@@ -225,7 +236,7 @@ namespace Test.Controllers
                     throw;
                 }
             }
-
+            Debug.WriteLine("None of the conditions triggered.");
             return StatusCode(HttpStatusCode.NoContent);
         }
 

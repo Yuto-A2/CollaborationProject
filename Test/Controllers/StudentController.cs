@@ -247,6 +247,8 @@ namespace Test.Controllers
         public ActionResult Update(int id, StudentDto Student)
         {
             // URL for the API request, including the student ID.
+            //curl -H "Content-Type:application/json" -d @student.json "https://localhost:44326/api/StudentData/UpdateStudent/{id}"
+
             string url = "StudentData/UpdateStudent/" + id;
 
             // Serialize the student object to JSON format.
@@ -277,14 +279,18 @@ namespace Test.Controllers
         /// </summary>
         /// <param name="id">The ID of the student to delete.</param>
         /// <returns>Returns the Delete view with the student's data or redirects to an error page.</returns>
-        // GET: Student/Delete/16
+        // POST: Student/Delete/16
         public ActionResult Delete(int id)
         {
             // URL for the API request, including the student ID.
-            string url = "StudentData/FindStudent/" + id;
+            // curl -d "" https://localhost:44326/api/StudentData/DeleteStudent/{id}
+
+            string url = "StudentData/DeleteStudent/" + id;
 
             // Synchronous call to the API to fetch the student data.
-            HttpResponseMessage response = client.GetAsync(url).Result;
+            HttpContent content = new StringContent("");
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
 
             // Log the response status code.
             Debug.WriteLine("Delete Response Status Code: " + response.StatusCode);
@@ -292,8 +298,7 @@ namespace Test.Controllers
             // If the response is successful, deserialize the student data and return the view.
             if (response.IsSuccessStatusCode)
             {
-                StudentDto selectedStudent = response.Content.ReadAsAsync<StudentDto>().Result;
-                return View(selectedStudent);
+                return RedirectToAction("List");
             }
             else
             {
@@ -302,7 +307,7 @@ namespace Test.Controllers
                 return RedirectToAction("Error");
             }
         }
-        //GET: Student/Delete/6
+        //GET: Student/DeleteConfirm/6
         public ActionResult DeleteConfirm(int id)
         {
             string url = "StudentData/FindStudent/" + id;
