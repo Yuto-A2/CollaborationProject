@@ -102,6 +102,40 @@ namespace Test.Controllers
         }
 
         /// <summary>
+        /// Adds a particular Student in the meal plan.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 201(Created)
+        /// CONTENT: A Student data
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// </returns>
+        /// <example>
+        /// POST: api/StudentMealPlan/AddStudentMealPlan/
+        ///FORM DATA: Student JSON Object
+        ///</example>
+        [ResponseType(typeof(StudentMealPlan))]
+        [HttpPost]
+        public IHttpActionResult AddStudentMealPlan(StudentMealPlanDto studentMealPlanDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            // Entity
+            var studentMealPlan = new StudentMealPlan
+            {
+                student_id = studentMealPlanDto.student_id,
+                plan_id = studentMealPlanDto.plan_id,
+            };
+
+            db.StudentMealPlans.Add(studentMealPlan);
+            db.SaveChanges();
+            return CreatedAtRoute("DefaultApi", new { id = studentMealPlan.Id }, studentMealPlan);
+        }
+
+        /// <summary>
         /// Updates a particular Student in the system with POST Data input.
         /// </summary>
         /// <returns>

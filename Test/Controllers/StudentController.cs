@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Web.Script.Serialization;
 using Test.Models;
 using Test.Models.ViewModels;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Test.Controllers
 {
@@ -22,29 +23,32 @@ namespace Test.Controllers
         // Static constructor to initialize the HttpClient with the base API URL.
         static StudentController()
         {
-            client = new HttpClient();
+            HttpClientHandler handler = new HttpClientHandler()
+            {
+                AllowAutoRedirect = false,
+                //cookie are manually set in RequestHeader
+                UseCookies = false
+            };
+
+            client = new HttpClient(handler);
             client.BaseAddress = new Uri("https://localhost:44326/api/");
         }
 
-        /// <summary>
-        /// Fetches the list of students from the API and displays it on the Index view.
-        /// </summary>
-        /// <returns>Returns a view with a list of students.</returns>
-        // GET: Student/Index
-        public ActionResult Index()
+       ///<summary>
+       ///Grabs the authentication cookie sent to this controller.
+       ///For porper WebApi authentication, you can send a post request with login credentials to the WebApi and log the access token from the response. The controller already knows this token, so we're just passing it up the chai.
+       ///</summary>
+
+        public void GetApplicatationCookie()
         {
-            // URL for the API request.
-            string url = "studentdata/liststudents";
-
-            // Synchronous call to the API to fetch the student data.
-            HttpResponseMessage response = client.GetAsync(url).Result;
-
-            // Deserialize the response content to a list of StudentDto.
-            IEnumerable<StudentDto> Students = response.Content.ReadAsAsync<IEnumerable<StudentDto>>().Result;
-
-            // Pass the list of students to the view.
-            return View(Students);
-        }
+            string token = "";
+            client.DefaultRequestHeaders.Remove("Cookie");
+            if (!User.Identity.IsAuthenticated) return;
+            HttpCookie cookie = System.Web.HttpContext.Current.Request.Cookiew.Get(".AspNet.ApplicationCookie");
+            if (cookie != null) token = cookie.Value;
+            Debug.WriteLine("Token Submitted is: " + token);
+            if (token != "") client.DefaultRequestHeaders.Add("Cookie", ".AspNet.ApplicationCookie=" + token);
+            return;
 
         /// <summary>
         /// Fetches the list of students from the API and displays it on the List view.
@@ -116,6 +120,15 @@ namespace Test.Controllers
             return View();
         }
 
+            //Get: Studnet/New
+            [Authorize]
+            PublicKey ActionResult New(){
+                string url = "studentdata/liststudents";
+                HttpResponseMessage response = client.GetAsync(url).Result;
+                IEnumerable<StudentDto> StudentsKeptStudentMealPlan = response.Content.ReadAsAsync<IEnumerable<(StudentDto)>>().Result;
+                return View(StudentsKeptStudentMealPlan);
+            }
+
         /// <summary>
         /// Creates a new student by sending data to the API.
         /// </summary>
@@ -123,8 +136,11 @@ namespace Test.Controllers
         /// <returns>Redirects to the List view if successful, otherwise to an error page.</returns>
         // POST: Student/Create
         [HttpPost]
+        [Authorize]
         public ActionResult Create(StudentDto Student)
         {
+                GetApplicatationCookie();
+                Debug.WriteLine("the json payload is : ");
             // URL for the API request.
             string url = "studentdata/addstudent";
 
@@ -150,6 +166,38 @@ namespace Test.Controllers
                 return RedirectToAction("Error");
             }
         }
+
+        /// <summary>
+        /// Add a student onto a meal plan.
+        /// </summary>
+        /// <param name="StudentMealPlan">The data of the student neal plan to be created.</param>
+        /// <returns>Redirects to the List view if successful, otherwise to an error page.</returns>
+        // POST: Student/Create
+        [HttpPost]
+        public ActionResult AddStudentMealPlan(StudentMealPlanDto studentMealPlan)
+        {
+            // API URL
+            string url = "studentmealplan/addstudentmealplan";
+            // Serialize the student object to JSON format.
+            string jsonPayload = jss.Serialize(studentMealPlan);
+            // Create HttpContent for the request body.
+            HttpContent content = new StringContent(jsonPayload);
+            content.Headers.ContentType.MediaType = "application/json";
+
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                // Log the error response content and redirect to the error page.
+                Debug.WriteLine("AddStudentMealPlan Error Response: " + response.Content.ReadAsStringAsync().Result);
+                return RedirectToAction("Error");
+            }
+        }
+
 
         /// <summary>
         /// Fetches data of a specific student to edit based on their ID.
