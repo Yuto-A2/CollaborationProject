@@ -1,3 +1,5 @@
+An app that ties together 3 projects: teacher & student entities, workout & exercise entities, and recipes, ingredients & meal (plans). 
+
 # Team Member
 
 Yuto, Noah, Breno
