@@ -26,9 +26,9 @@ If I had another chance similiar this project, I would like to picture function.
 
 ### Explanation this app.
 
-This app is reciepe management system.
+This app is recipe management system.
 
-Teachers can manage students meal plan. They see theri meal plan and students. THey can also add, update, and delete the students, meal plan.
+Teachers can manage students meal plan. They see their meal plan and students. THey can also add, update, and delete the students, meal plan.
 
 ---
 
