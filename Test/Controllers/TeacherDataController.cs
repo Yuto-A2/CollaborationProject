@@ -120,6 +120,44 @@ namespace Test.Controllers
             return CreatedAtRoute("DefaultApi", new { id = Teacher.teacher_id }, Teacher);
         }
 
+
+
+        /// <summary>
+        /// Adds a particular Teacher in the meal plan.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 201(Created)
+        /// CONTENT: A Student data
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// </returns>
+        /// <example>
+        /// POST: api/TeacherMealPlan/AddTeacherMealPlan/
+        ///FORM DATA: Student JSON Object
+        ///</example>
+        [ResponseType(typeof(TeacherMealPlan))]
+        [HttpPost]
+        public IHttpActionResult AddTeacherMealPlan(TeacherMealPlanDto teacherMealPlanDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            // Entity
+            var teacherMealPlan = new TeacherMealPlan
+            {
+                teacher_id = teacherMealPlanDto.teacher_id,
+                plan_id = teacherMealPlanDto.plan_id,
+            };
+
+            db.TeacherMealPlans.Add(teacherMealPlan);
+            db.SaveChanges();
+            return CreatedAtRoute("DefaultApi", new { id = teacherMealPlan.Id }, teacherMealPlan);
+        }
+
+
+
         /// <summary>
         /// Updates a particular teacher in the database
         /// </summary>

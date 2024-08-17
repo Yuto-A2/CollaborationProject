@@ -80,6 +80,69 @@ namespace Test.Controllers
             }
 
         }
+
+
+        /// <summary>
+        /// Adds a teacher in the database
+        /// </summary>
+        /// <param name="Teacher">JSON FROM DATA of an Teacher</param>
+        /// <returns>
+        /// HEADER: 201(Created)
+        /// CONTENT: Teacher ID, Teacher Data
+        /// or
+        /// HEADER: 400 (Bad Request)
+        /// </returns>
+        /// <example>
+        /// POST: api/TeacherData/AddTeacher
+        /// FROM DATA: Teacher JSON Object
+        /// </example>
+
+        [ResponseType(typeof(Models.Teacher))]
+        [HttpPost]
+        public IHttpActionResult AddTeacher(Models.Teacher Teacher)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.Teachers.Add(Teacher);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = Teacher.teacher_id }, Teacher);
+        }
+
+        /// <summary>
+        /// Add a teacher onto a meal plan.
+        /// </summary>
+        /// <param name="TeacherMealPlan">The data of the teacher neal plan to be created.</param>
+        /// <returns>Redirects to the List view if successful, otherwise to an error page.</returns>
+        // POST: Teacher/Create
+        [HttpPost]
+        public ActionResult AddTeacherMealPlan(TeacherMealPlanDto teacherMealPlan)
+        {
+            // API URL
+            string url = "teachermealplan/addteachermealplan";
+            // Serialize the teacher object to JSON format.
+            string jsonPayload = jss.Serialize(teacherMealPlan);
+            // Create HttpContent for the request body.
+            HttpContent content = new StringContent(jsonPayload);
+            content.Headers.ContentType.MediaType = "application/json";
+
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                // Log the error response content and redirect to the error page.
+                Debug.WriteLine("AddTeacherMealPlan Error Response: " + response.Content.ReadAsStringAsync().Result);
+                return RedirectToAction("Error");
+            }
+        }
+
         //GET: Teacher/Edit/1
         public ActionResult Edit(int id)
         {

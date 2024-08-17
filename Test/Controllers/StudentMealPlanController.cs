@@ -156,13 +156,17 @@ namespace Test.Controllers
                 response = client.PostAsync(url, requestcontent).Result;
                 return RedirectToAction("List");
             }
-            else
+            else if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("List");
+            }
             {
                 return RedirectToAction("Error");
             }
         }
 
         // GET: StudentMealPlan/Delete/5
+        [Authorize]
         public ActionResult DeleteConfirm(int id)
         {
             string url = "StudentMealPlanData/FindStudentMealPlan" + id;
@@ -173,8 +177,10 @@ namespace Test.Controllers
 
         //POST: Diary/Delete/5
         [HttpPost]
+        [Authorize]
         public ActionResult Delete(int id)
         {
+            GetApplicationCookie();
             string url = "studentmealplandata/deletestudentmealplan" + id;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
